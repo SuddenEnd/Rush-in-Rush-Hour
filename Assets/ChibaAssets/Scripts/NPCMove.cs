@@ -9,7 +9,7 @@ public class NPCMove : MonoBehaviour {
 
     void Start()
     {
-        target = GameObject.Find("Home").transform;
+        target = GameObject.Find("Player").transform;
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         agent.speed = 10;
     }
