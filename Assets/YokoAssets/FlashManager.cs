@@ -11,20 +11,22 @@ public class FlashManager : MonoBehaviour {
     public Sprite SignalOff;
     [Header("点滅する秒数")]
     public float Flashtime;
-    private GameObject SignalIcon;
     private Image Signal;
     
 
     // Use this for initialization
     void Start()
     {
-        Flashing(0);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Flashing(2);
+        }
     }
 
     void Flashing(int Flashnumber)
@@ -42,6 +44,7 @@ public class FlashManager : MonoBehaviour {
 
     private IEnumerator Flash()
     {
+        //画像切り替え方式
         yield return new WaitForSeconds(Flashtime);
         Signal.sprite = SignalOn;
         yield return new WaitForSeconds(Flashtime);
@@ -49,6 +52,6 @@ public class FlashManager : MonoBehaviour {
         yield return new WaitForSeconds(Flashtime);
         Signal.sprite = SignalOn;
         yield return new WaitForSeconds(Flashtime);
-        Signal.sprite = SignalOff;
+        Signal.sprite = SignalOff;         
     }
 }
