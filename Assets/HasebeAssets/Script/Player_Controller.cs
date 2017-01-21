@@ -13,18 +13,21 @@ public class Player_Controller : MonoBehaviour
     //遷移したい任意のシーン名を入力する
     public string scene;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
+    //車両移動待機中falseにする
+    static bool prepare=true;
 
     // Update is called once per frame
     void Update()
     {
+        if (prepare == false) return; 
+
         if (Input.GetKey("w"))
         {
             transform.position += transform.forward * vel;
+        }
+        if (Input.GetKey("s"))
+        {
+            transform.position -= transform.forward * vel;
         }
         if (Input.GetKey("d"))
         {
@@ -32,7 +35,6 @@ public class Player_Controller : MonoBehaviour
         }
         if (Input.GetKey("a"))
         {
-            Debug.Log(left);
             transform.Rotate(0, left, 0);
         }
     }
