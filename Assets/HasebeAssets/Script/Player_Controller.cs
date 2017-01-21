@@ -49,6 +49,7 @@ public class Player_Controller : MonoBehaviour
 //        Debug.Log(transform.position);
 //=======
 
+
         if (bugClearTimer < 1 && !isBugClear)
         {
             transform.Translate(0, 0.000000000000000001f, 0);
@@ -106,6 +107,7 @@ public class Player_Controller : MonoBehaviour
         if (other.gameObject.tag == "NPC")
         {
             stress_point += add_stress_point;
+<<<<<<< HEAD
             Debug.Log(stress_point);
 //<<<<<<< HEAD
 
@@ -113,6 +115,10 @@ public class Player_Controller : MonoBehaviour
 
             if (stress_point > 100) SceneManager.LoadScene("Ending");
 //>>>>>>> origin / Shimo
+=======
+ //           Debug.Log(stress_point);
+ //           if(stress_point>100) SceneManager.LoadScene("Ending");
+>>>>>>> origin/CHIBA
 
         }
     }
@@ -171,7 +177,7 @@ public class Player_Controller : MonoBehaviour
     void PlayerAutoMove()
     {
         speed += 2f;
-        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z -18f), speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z - 13.5f), speed * Time.deltaTime);
     }
 //>>>>>>> origin/Shimo
 }
