@@ -23,7 +23,7 @@ public class FlashManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             Flashing(2);
         }
@@ -45,7 +45,7 @@ public class FlashManager : MonoBehaviour {
     private IEnumerator Flash()
     {
         //画像切り替え方式
-        yield return new WaitForSeconds(Flashtime);
+  //      yield return new WaitForSeconds(Flashtime);
         Signal.sprite = SignalOn;
         yield return new WaitForSeconds(Flashtime);
         Signal.sprite = SignalOff;
