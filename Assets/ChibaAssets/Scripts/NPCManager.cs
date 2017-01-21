@@ -13,13 +13,13 @@ public class NPCManager : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         if (Input.GetKeyDown(KeyCode.O)) {
-            tagObjs = GameObject.FindGameObjectsWithTag("NPC");
             GetOffNPC();
         }
     }
 
-    void GetOffNPC()
+    public void GetOffNPC()
     {
+        tagObjs = GameObject.FindGameObjectsWithTag("NPC");
         foreach (GameObject obj in tagObjs)
         {
             if (obj.transform.parent == Player.transform.parent) {

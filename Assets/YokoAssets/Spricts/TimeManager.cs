@@ -17,9 +17,8 @@ public class TimeManager : MonoBehaviour {
 
     private bool Running = true;
     
-    public float runTime;
-    
-    public float stopTime;
+    private float runTime;    
+    private float stopTime;
     private bool flashcooltime = false;
 
 
@@ -29,12 +28,14 @@ public class TimeManager : MonoBehaviour {
     FlashManager FlashM;
     Platform PlatF;
     TrainManager TrainM;
+    NPCManager NPCM;
 
 	// Use this for initialization
 	void Start () {
         FlashM = GameObject.Find("FlashIcon").GetComponent<FlashManager>();
         PlatF = GameObject.Find("Platform").GetComponent<Platform>();
         TrainM = GameObject.Find("Debug_TrainManager").GetComponent<TrainManager>();
+        NPCM = GameObject.Find("NPCManager").GetComponent<NPCManager>();
         PlatF.isScroll = true;
     }
 	
@@ -88,9 +89,10 @@ public class TimeManager : MonoBehaviour {
     {
         PlatF.isScroll = false;
         runTime = 0.0f;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(3.0f);
         Running = false;
         TrainM.TrainDoorOpen();
+        NPCM.GetOffNPC();
         flashcooltime = false;
         
     }
@@ -98,7 +100,7 @@ public class TimeManager : MonoBehaviour {
     private IEnumerator DoorClose()
     {
         stopTime = 0.0f;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(3.0f);
         Running = true;
         PlatF.isScroll = true;
     }
