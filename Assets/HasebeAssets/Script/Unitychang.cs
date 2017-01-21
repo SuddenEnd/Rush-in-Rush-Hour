@@ -21,14 +21,7 @@ public class Unitychang : MonoBehaviour {
         {
             animator.SetBool("is_running", false);
         }
-        if (Input.GetKey("d"))
-        {
-            //transform.Rotate(0, 10, 0);
-        }
-        if (Input.GetKey("a"))
-        {
-            //transform.Rotate(0, -10, 0);
-        }
+
     }
 }
 
