@@ -12,6 +12,8 @@ public class FlashManager : MonoBehaviour {
     [Header("点滅する秒数")]
     public float Flashtime;
     private Image Signal;
+
+    
     
 
     // Use this for initialization
@@ -23,13 +25,9 @@ public class FlashManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            Flashing(2);
-        }
     }
 
-    void Flashing(int Flashnumber)
+    public void Flashing(int Flashnumber)
     {
         if(Flashnumber == 0)
         {
@@ -52,6 +50,7 @@ public class FlashManager : MonoBehaviour {
         yield return new WaitForSeconds(Flashtime);
         Signal.sprite = SignalOn;
         yield return new WaitForSeconds(Flashtime);
-        Signal.sprite = SignalOff;         
+        Signal.sprite = SignalOff;
+        TimeManage.flashcount++;
     }
 }

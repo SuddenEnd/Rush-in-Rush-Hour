@@ -5,20 +5,79 @@ using UnityEngine;
 public class TimeManage : MonoBehaviour {
 
     [Header("ゲームタイム")]
-    public int GameTime;
+    public float gameTime;
     [Header("到着予告時間")]
-    public int anounceTime;
+    public float anounceTime;
     [Header("ドアの空いている時間")]
-    public int doorTime;
+    public float doorTime;
+    [Header("走行時間")]
+    public float runTimememory;
+    [Header("停車時間")]
+    public float stopTimememory;
 
+    private bool Running = false;
+    private float runTime;
+    private float stopTime;
+
+
+    public static int flashcount = 0;
+
+
+    FlashManager FlashM;
+    Platform PlatF;
+    TrainManager TrainM;
 
 	// Use this for initialization
 	void Start () {
-		
+        FlashM = GameObject.Find("FlashIcon").GetComponent<FlashManager>();
+        PlatF = GameObject.Find("Platform").GetComponent<Platform>();
+        TrainM = GameObject.Find("Debug_TrainManager").GetComponent<TrainManager>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        gameTime -= Time.deltaTime;
+        Runningjudge();
+        judgetime();
+        if (runTimememory - runTime <= anounceTime)
+        {
+            Flashjudge();
+        }
+
 	}
+
+    void Runningjudge()
+    {
+        if(runTime >= runTimememory)
+        {
+            Running = false;
+            runTime = 0.0f;
+            TrainM.TrainDoorOpen();
+
+
+
+        }
+
+        if(stopTime >= stopTimememory)
+        {
+            Running = true;
+            stopTime = 0.0f;
+        }
+    }
+    void judgetime()
+    {
+        if(Running == true)
+        {
+            runTime += Time.deltaTime;
+        }
+
+        if(Running == false)
+        {
+            stopTime += Time.deltaTime;
+        }
+    }
+    void Flashjudge()
+    {
+            FlashM.Flashing(flashcount);
+    }
 }
