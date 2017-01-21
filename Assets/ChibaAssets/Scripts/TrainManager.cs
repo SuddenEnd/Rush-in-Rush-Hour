@@ -11,13 +11,16 @@ public class TrainManager : MonoBehaviour {
     [Range(1, 10)]
     public float doorLimit;
     private float doorLimit_memory;
-    
+    public GameObject trainSet;
+
     // Use this for initialization
     void Start () {
+        isClose = true;
         for (int i=0; i < trainLength; i++) {
             CreateTrain(i);
         }
         doorLimit_memory = doorLimit;
+        trainSet = GameObject.Find("TrainSet");
 	}
 	
 	// Update is called once per frame
@@ -40,6 +43,7 @@ public class TrainManager : MonoBehaviour {
         GameObject trainObject = Instantiate(TrainList[trainRandom]) as GameObject;
         trainObject.transform.position = new Vector3(0, 0, 13.6f * Distance);
         animatorList.Add(trainObject.transform.FindChild("DoorSet").GetComponent<Animator>());
+        trainObject.transform.parent = trainSet.transform;
     }
 
     void TrainDoorOpen() {
