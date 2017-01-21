@@ -14,20 +14,53 @@ public class Player_Controller : MonoBehaviour
     public string scene;
 
     //車両移動待機中falseにする
-    static bool prepare=true;
+    static public bool prepare;
+
+    //千葉追加分
+    private Vector3 autoPosition;
+    private float speed;
+    private float speed_debug;
+    private GameObject m_camera;
+    public bool backRotate;
+    // Use this for initialization
+    void Start()
+    {
+        backRotate = false;
+        m_camera = GameObject.Find("Main Camera");
+        speed = 0;
+        prepare = true;
+    }
 
     // Update is called once per frame
-    void Update()
+     void Update()
     {
+        if (transform.eulerAngles.y > 270 || transform.eulerAngles.y < 90)
+            backRotate = false;
+        else
+            backRotate = true;
+
+        if (!prepare)
+            PlayerAutoMove();
+        else
+        {
+            autoPosition = transform.position;
+            speed = 0;
+            prepare = true;
+        }
+
         if (prepare == false) return; 
 
         if (Input.GetKey("w"))
         {
-            transform.position += transform.forward * vel;
+            if (backRotate && Mathf.Abs(Vector3.Distance(new Vector3(0, 0, transform.position.z), new Vector3(0, 0, m_camera.transform.position.z))) < 4f) { }
+            else
+                transform.position += transform.forward * vel;
         }
         if (Input.GetKey("s"))
         {
-            transform.position -= transform.forward * vel;
+            if (!backRotate && Mathf.Abs(Vector3.Distance(new Vector3(0, 0, transform.position.z), new Vector3(0, 0, m_camera.transform.position.z))) < 4f) { }
+            else
+                transform.position -= transform.forward * vel;
         }
         if (Input.GetKey("d"))
         {
@@ -35,9 +68,10 @@ public class Player_Controller : MonoBehaviour
         }
         if (Input.GetKey("a"))
         {
-            transform.Rotate(0, left, 0);
+            transform.Rotate(0, -right, 0);
         }
     }
+
     void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "NPC")
@@ -47,5 +81,28 @@ public class Player_Controller : MonoBehaviour
             if(stress_point>100) SceneManager.LoadScene("Ending");
 
         }
+    }
+
+    void OnCollisionStay(Collision col)
+    {
+        if (col.gameObject.tag == "Stage")
+        {
+            transform.parent = col.gameObject.transform.parent;
+        }
+    }
+
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.gameObject.tag == "DoorSwitch")
+        {
+            col.gameObject.transform.parent.gameObject.GetComponent<Animator>().SetBool("isOpen", true);
+            prepare = false;
+        }
+    }
+
+    void PlayerAutoMove()
+    {
+        speed += 2f;
+        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z + 2), speed * Time.deltaTime);
     }
 }
