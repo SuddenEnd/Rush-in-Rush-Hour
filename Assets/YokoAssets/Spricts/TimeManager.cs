@@ -24,7 +24,6 @@ public class TimeManager : MonoBehaviour {
     private float stopTime;
     private bool flashcooltime = false;
 
-
     public static int flashcount = 0;
 
 
@@ -41,6 +40,7 @@ public class TimeManager : MonoBehaviour {
 		//        PlatF = GameObject.Find("Platform").GetComponent<Platform>();
 		TrainM = GameObject.Find("TrainManager").GetComponent<TrainManager>();
         NPCM = GameObject.Find("NPCManager").GetComponent<NPCManager>();
+     //   TrainSposi = TrainS.transform;
         PlatF.isScroll = true;
     }
 	
@@ -69,6 +69,7 @@ public class TimeManager : MonoBehaviour {
         {
             StartCoroutine("DoorClose");
 			SMO.SE_Shot(9);
+            
 		}
     }
     void judgetime()
@@ -115,5 +116,6 @@ public class TimeManager : MonoBehaviour {
         yield return new WaitForSeconds(2.5f);
         Running = true;
         PlatF.isScroll = true;
+
     }
 }
