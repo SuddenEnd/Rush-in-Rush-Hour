@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TimeManage : MonoBehaviour {
+public class TimeManager : MonoBehaviour {
 
     [Header("ゲームタイム")]
     public float gameTime;
@@ -15,9 +15,12 @@ public class TimeManage : MonoBehaviour {
     [Header("停車時間")]
     public float stopTimememory;
 
-    private bool Running = false;
-    private float runTime;
-    private float stopTime;
+    private bool Running = true;
+    
+    public float runTime;
+    
+    public float stopTime;
+    private bool flashcooltime = false;
 
 
     public static int flashcount = 0;
@@ -32,7 +35,8 @@ public class TimeManage : MonoBehaviour {
         FlashM = GameObject.Find("FlashIcon").GetComponent<FlashManager>();
         PlatF = GameObject.Find("Platform").GetComponent<Platform>();
         TrainM = GameObject.Find("Debug_TrainManager").GetComponent<TrainManager>();
-	}
+        PlatF.isScroll = true;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -42,6 +46,7 @@ public class TimeManage : MonoBehaviour {
         if (runTimememory - runTime <= anounceTime)
         {
             Flashjudge();
+            flashcooltime = true;
         }
 
 	}
@@ -50,18 +55,12 @@ public class TimeManage : MonoBehaviour {
     {
         if(runTime >= runTimememory)
         {
-            Running = false;
-            runTime = 0.0f;
-            TrainM.TrainDoorOpen();
-
-
-
+            StartCoroutine("DoorOpen");      
         }
 
         if(stopTime >= stopTimememory)
         {
-            Running = true;
-            stopTime = 0.0f;
+            StartCoroutine("DoorClose");
         }
     }
     void judgetime()
@@ -78,6 +77,29 @@ public class TimeManage : MonoBehaviour {
     }
     void Flashjudge()
     {
+        if(flashcooltime == false)
+        {
             FlashM.Flashing(flashcount);
+        }
+
+    }
+
+    private IEnumerator DoorOpen()
+    {
+        PlatF.isScroll = false;
+        runTime = 0.0f;
+        yield return new WaitForSeconds(2.0f);
+        Running = false;
+        TrainM.TrainDoorOpen();
+        flashcooltime = false;
+        
+    }
+
+    private IEnumerator DoorClose()
+    {
+        stopTime = 0.0f;
+        yield return new WaitForSeconds(2.0f);
+        Running = true;
+        PlatF.isScroll = true;
     }
 }

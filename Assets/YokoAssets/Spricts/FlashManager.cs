@@ -51,6 +51,6 @@ public class FlashManager : MonoBehaviour {
         Signal.sprite = SignalOn;
         yield return new WaitForSeconds(Flashtime);
         Signal.sprite = SignalOff;
-        TimeManage.flashcount++;
+        TimeManager.flashcount++;
     }
 }
