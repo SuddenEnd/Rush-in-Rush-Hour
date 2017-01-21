@@ -9,21 +9,18 @@ public class Explain_btn : MonoBehaviour {
 
     //遷移したい任意のシーン名を入力する
     public string scene;
- //   string now_lang = now_lang;
-    Button btn;
+    Image btn;
+    public Sprite japanese, english;
 
     public void Update()
     {
-        if (Change_lang_Button.now_lang == "English")
-        {
-            btn = GetComponent<Button>();
-            GetComponentInChildren<Text>().text = "EXPLANATION";
-        }
+        btn = GetComponent<Image>();
+
         if (Change_lang_Button.now_lang == "Japanese")
         {
-            btn = GetComponent<Button>();
-            GetComponentInChildren<Text>().text = "説明";
+            btn.sprite = japanese;
         }
+        else btn.sprite = english;
     }
 
     public void LoadMain()
