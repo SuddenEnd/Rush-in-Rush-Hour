@@ -46,7 +46,7 @@ public class TrainManager : MonoBehaviour {
         trainObject.transform.parent = trainSet.transform;
     }
 
-    void TrainDoorOpen() {
+    public void TrainDoorOpen() {
         isClose = false;
         for (int i=0; i < animatorList.Count; i++) {
             animatorList[i].SetTrigger("Open");
