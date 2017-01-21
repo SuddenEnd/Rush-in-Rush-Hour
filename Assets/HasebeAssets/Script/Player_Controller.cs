@@ -26,11 +26,11 @@ public class Player_Controller : MonoBehaviour
         {
             transform.position += transform.forward * vel;
         }
-        else if (Input.GetKey("d"))
+        if (Input.GetKey("d"))
         {
             transform.Rotate(0, right, 0);
         }
-        else if (Input.GetKey("a"))
+        if (Input.GetKey("a"))
         {
             Debug.Log(left);
             transform.Rotate(0, left, 0);
