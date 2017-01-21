@@ -1,0 +1,255 @@
+fileFormatVersion: 2
+guid: 9c6721599f6b13245a9ad9b52da84e86
+timeCreated: 1485015412
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: enemy_walk:Head
+    100002: enemy_walk:HeadTop
+    100004: enemy_walk:Hips
+    100006: enemy_walk:ikHandle3
+    100008: enemy_walk:ikHandle4
+    100010: enemy_walk:LeftArm
+    100012: enemy_walk:LeftHand
+    100014: enemy_walk:LeftLeg
+    100016: enemy_walk:LeftLegTop
+    100018: enemy_walk:LeftUpArm
+    100020: enemy_walk:LeftUpLeg
+    100022: enemy_walk:Neck
+    100024: enemy_walk:pCylinder1
+    100026: enemy_walk:pCylinder5
+    100028: enemy_walk:polySurface10
+    100030: enemy_walk:polySurface2
+    100032: enemy_walk:polySurface4
+    100034: enemy_walk:polySurface5
+    100036: enemy_walk:polySurface6
+    100038: enemy_walk:polySurface7
+    100040: enemy_walk:polySurface8
+    100042: enemy_walk:polySurface9
+    100044: enemy_walk:pSphere1
+    100046: enemy_walk:RightArm
+    100048: enemy_walk:RightHand
+    100050: enemy_walk:RightLeg
+    100052: enemy_walk:RightLegTop
+    100054: enemy_walk:RightUpArm
+    100056: enemy_walk:RightUpLeg
+    100058: enemy_walk:Spine
+    100060: enemy_walk:Spine2
+    100062: //RootNode
+    400000: enemy_walk:Head
+    400002: enemy_walk:HeadTop
+    400004: enemy_walk:Hips
+    400006: enemy_walk:ikHandle3
+    400008: enemy_walk:ikHandle4
+    400010: enemy_walk:LeftArm
+    400012: enemy_walk:LeftHand
+    400014: enemy_walk:LeftLeg
+    400016: enemy_walk:LeftLegTop
+    400018: enemy_walk:LeftUpArm
+    400020: enemy_walk:LeftUpLeg
+    400022: enemy_walk:Neck
+    400024: enemy_walk:pCylinder1
+    400026: enemy_walk:pCylinder5
+    400028: enemy_walk:polySurface10
+    400030: enemy_walk:polySurface2
+    400032: enemy_walk:polySurface4
+    400034: enemy_walk:polySurface5
+    400036: enemy_walk:polySurface6
+    400038: enemy_walk:polySurface7
+    400040: enemy_walk:polySurface8
+    400042: enemy_walk:polySurface9
+    400044: enemy_walk:pSphere1
+    400046: enemy_walk:RightArm
+    400048: enemy_walk:RightHand
+    400050: enemy_walk:RightLeg
+    400052: enemy_walk:RightLegTop
+    400054: enemy_walk:RightUpArm
+    400056: enemy_walk:RightUpLeg
+    400058: enemy_walk:Spine
+    400060: enemy_walk:Spine2
+    400062: //RootNode
+    4300000: enemy_walk:pSphere1
+    4300002: enemy_walk:polySurface9
+    4300004: enemy_walk:polySurface10
+    4300006: enemy_walk:polySurface5
+    4300008: enemy_walk:polySurface6
+    4300010: enemy_walk:polySurface2
+    4300012: enemy_walk:polySurface4
+    4300014: enemy_walk:polySurface7
+    4300016: enemy_walk:polySurface8
+    4300018: enemy_walk:pCylinder1
+    4300020: enemy_walk:pCylinder5
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: enemy_walk:pCylinder1
+    13700002: enemy_walk:pCylinder5
+    13700004: enemy_walk:polySurface10
+    13700006: enemy_walk:polySurface2
+    13700008: enemy_walk:polySurface4
+    13700010: enemy_walk:polySurface5
+    13700012: enemy_walk:polySurface6
+    13700014: enemy_walk:polySurface7
+    13700016: enemy_walk:polySurface8
+    13700018: enemy_walk:polySurface9
+    13700020: enemy_walk:pSphere1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: enemy_walk:Hips
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:LeftUpLeg
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:LeftUpLeg/enemy_walk:LeftLeg
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:LeftUpLeg/enemy_walk:LeftLeg/enemy_walk:LeftLegTop
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:RightUpLeg
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:RightUpLeg/enemy_walk:RightLeg
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:RightUpLeg/enemy_walk:RightLeg/enemy_walk:RightLegTop
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:Spine
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:Spine/enemy_walk:Spine2
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:Spine/enemy_walk:Spine2/enemy_walk:LeftUpArm
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:Spine/enemy_walk:Spine2/enemy_walk:LeftUpArm/enemy_walk:LeftArm
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:Spine/enemy_walk:Spine2/enemy_walk:LeftUpArm/enemy_walk:LeftArm/enemy_walk:LeftHand
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:Spine/enemy_walk:Spine2/enemy_walk:Neck
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:Spine/enemy_walk:Spine2/enemy_walk:Neck/enemy_walk:Head
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:Spine/enemy_walk:Spine2/enemy_walk:Neck/enemy_walk:Head/enemy_walk:HeadTop
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:Spine/enemy_walk:Spine2/enemy_walk:RightUpArm
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:Spine/enemy_walk:Spine2/enemy_walk:RightUpArm/enemy_walk:RightArm
+        weight: 1
+      - path: enemy_walk:Hips/enemy_walk:Spine/enemy_walk:Spine2/enemy_walk:RightUpArm/enemy_walk:RightArm/enemy_walk:RightHand
+        weight: 1
+      - path: enemy_walk:ikHandle3
+        weight: 1
+      - path: enemy_walk:ikHandle4
+        weight: 1
+      - path: enemy_walk:pCylinder1
+        weight: 1
+      - path: enemy_walk:pCylinder5
+        weight: 1
+      - path: enemy_walk:polySurface2
+        weight: 1
+      - path: enemy_walk:polySurface4
+        weight: 1
+      - path: enemy_walk:polySurface5
+        weight: 1
+      - path: enemy_walk:polySurface6
+        weight: 1
+      - path: enemy_walk:polySurface7
+        weight: 1
+      - path: enemy_walk:polySurface8
+        weight: 1
+      - path: enemy_walk:polySurface9
+        weight: 1
+      - path: enemy_walk:polySurface10
+        weight: 1
+      - path: enemy_walk:pSphere1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
