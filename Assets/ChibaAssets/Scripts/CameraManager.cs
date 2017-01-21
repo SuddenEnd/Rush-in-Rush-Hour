@@ -13,7 +13,7 @@ public class CameraManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Player.passingDoor)
+        if (!Player_Controller.prepare)
         {
             speed += 3f;
             if (!isFirst)
@@ -24,9 +24,9 @@ public class CameraManager : MonoBehaviour {
             this.transform.position = Vector3.Lerp(cameraPosition, new Vector3(cameraPosition.x, cameraPosition.y, cameraPosition.z + 13.6f), speed * Time.deltaTime);
         }
 
-        if (Mathf.Abs(Vector3.Distance(this.transform.position, new Vector3(cameraPosition.x, cameraPosition.y, cameraPosition.z + 13.6f))) < 0.5f && Player.passingDoor) {
+        if (Mathf.Abs(Vector3.Distance(this.transform.position, new Vector3(cameraPosition.x, cameraPosition.y, cameraPosition.z + 13.6f))) < 0.5f &&! Player_Controller.prepare) {
             this.transform.position = new Vector3(cameraPosition.x, cameraPosition.y, cameraPosition.z + 13.6f);
-            Player.passingDoor = false;
+            Player_Controller.prepare = true;
             isFirst = false;
             speed = 0;
         }
