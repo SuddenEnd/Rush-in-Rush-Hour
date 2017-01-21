@@ -29,6 +29,7 @@ public class TimeManager : MonoBehaviour {
     Platform PlatF;
     TrainManager TrainM;
     NPCManager NPCM;
+    MobController MobC;
 
 	// Use this for initialization
 	void Start () {
@@ -89,10 +90,12 @@ public class TimeManager : MonoBehaviour {
     {
         PlatF.isScroll = false;
         runTime = 0.0f;
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.5f);
         Running = false;
         TrainM.TrainDoorOpen();
         NPCM.GetOffNPC();
+        yield return new WaitForSeconds(2.0f);
+        MobC = GameObject.Find("Mob(Clone)").GetComponent<MobController>();
         flashcooltime = false;
         
     }
@@ -100,7 +103,7 @@ public class TimeManager : MonoBehaviour {
     private IEnumerator DoorClose()
     {
         stopTime = 0.0f;
-        yield return new WaitForSeconds(3.0f);
+        yield return new WaitForSeconds(2.5f);
         Running = true;
         PlatF.isScroll = true;
     }
