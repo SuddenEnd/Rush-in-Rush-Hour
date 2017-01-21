@@ -28,6 +28,7 @@ public class Player_Controller : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        stress_point = 0;
         bugClearTimer = 0;
         backRotate = false;
         m_camera = GameObject.Find("Main Camera");
@@ -82,19 +83,19 @@ public class Player_Controller : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision other)
+    void OnCollisionStay(Collision other)
     {
-        if (other.gameObject.tag == "NPC")
+        if (other.gameObject.tag == "NPC" || other.gameObject.tag == "Mob")
         {
             GageM.StressUp();
             
  //           Debug.Log(stress_point);
- //           if(stress_point>100) SceneManager.LoadScene("Ending");
+            if(stress_point>100) SceneManager.LoadScene("Ending");
 
         }
     }
 
-    void OnCollisionStay(Collision col)
+    void OnCollisionEnter(Collision col)
     {
         if (col.gameObject.tag == "Stage")
         {
