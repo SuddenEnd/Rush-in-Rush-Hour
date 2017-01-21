@@ -23,14 +23,12 @@ public class EndingScenario : MonoBehaviour
         else if (resultStresspoint > 60) scenarioLabel = "Badend";
         else if (resultStresspoint > 40) scenarioLabel = "Nomalend";
         else scenarioLabel = "Goodend";
-
+        
         StartCoroutine(CoTalk());
     }
 
     IEnumerator CoTalk()
     {
-
-
         //「宴」のシナリオ呼び出し
         engine.JumpScenario(scenarioLabel);
 
@@ -39,8 +37,6 @@ public class EndingScenario : MonoBehaviour
         {
             yield return 0;
         }
-
         SceneManager.LoadScene(scene);
     }
-
 }
