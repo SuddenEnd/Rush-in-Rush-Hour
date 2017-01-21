@@ -10,17 +10,9 @@ public class mainLoadScript : MonoBehaviour
     SoundManager_origin SMO;
     //遷移したい任意のシーン名を入力する
     public string scene;
-    string now_lang = Change_lang_Button.now_lang;
-    Button btn;
+    Image btn;
+    public Sprite japanese, english;
 
-    //public void Update()
-    //{
-    //    if (now_lang == "Japanese")
-    //    {
-    //        btn = GetComponent<Button>();
-    //        GetComponentInChildren<Text>().text = "START";
-    //    }
-    //}
 
     private void Start()
     {
@@ -29,12 +21,15 @@ public class mainLoadScript : MonoBehaviour
 
     public void Update()
     {
-        if (now_lang == "Japanese")
+        btn = GetComponent<Image>();
+
+        if (Change_lang_Button.now_lang == "Japanese")
         {
-            btn = GetComponent<Button>();
-            GetComponentInChildren<Text>().text = "START";
+            btn.sprite = japanese;
         }
+        else btn.sprite = english;
     }
+
 
     public void LoadMain()
     {

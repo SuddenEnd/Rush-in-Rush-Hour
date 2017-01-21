@@ -2,20 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Change_lang_Button : MonoBehaviour
 {
     static public string now_lang = "Japanese";
+    string language;
 
-    //public void onClick()
-    //{
-    //    GetComponent<Button>().onClick.AddListener(change_lang);
-    //}
+    private void Start()
+    {
+        language = this.name;
+    }
+
     public void change_lang()
     {
-        if (now_lang == "Japanese") now_lang = "English";
-        else if (now_lang == "English") now_lang = "Japanese";
+        now_lang = language;
 
-        Debug.Log(now_lang);
+        SceneManager.LoadScene("Start");
     }
 }
