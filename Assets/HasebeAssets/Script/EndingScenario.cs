@@ -10,7 +10,7 @@ public class EndingScenario : MonoBehaviour
     Player_Controller PlayerController;
     public AdvEngine engine;
     string scenarioLabel;
-
+    bool finish = false;
     //遷移したい任意のシーン名を入力する
     public string scene;
 
@@ -27,6 +27,11 @@ public class EndingScenario : MonoBehaviour
         StartCoroutine(CoTalk());
     }
 
+    private void Update()
+    {
+        if (finish) SceneManager.LoadScene(scene);
+
+    }
     IEnumerator CoTalk()
     {
         //「宴」のシナリオ呼び出し
@@ -37,6 +42,6 @@ public class EndingScenario : MonoBehaviour
         {
             yield return 0;
         }
-        SceneManager.LoadScene(scene);
+        finish = true;
     }
 }
