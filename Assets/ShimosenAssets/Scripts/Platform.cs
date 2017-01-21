@@ -45,6 +45,10 @@ public class Platform : MonoBehaviour {
 
 
 	void Update () {
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			isScroll = !isScroll;
+		}
+		
 
 		if (isScroll) {
 			if (!loadOnce) {
