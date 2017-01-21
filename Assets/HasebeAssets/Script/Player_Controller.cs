@@ -67,23 +67,23 @@ public class Player_Controller : MonoBehaviour
 
         if (prepare == false) return; 
 
-        if (Input.GetKey("w"))
+        if (Input.GetKey(KeyCode.W))
         {
             if (backRotate && Mathf.Abs(Vector3.Distance(new Vector3(0, 0, transform.position.z), new Vector3(0, 0, m_camera.transform.position.z))) < 4f) { }
             else
                 transform.position += transform.forward * vel;
         }
-        if (Input.GetKey("s"))
+        if (Input.GetKey(KeyCode.S))
         {
             if (!backRotate && Mathf.Abs(Vector3.Distance(new Vector3(0, 0, transform.position.z), new Vector3(0, 0, m_camera.transform.position.z))) < 4f) { }
             else
                 transform.position -= transform.forward * vel;
         }
-        if (Input.GetKey("d"))
+        if (Input.GetKey(KeyCode.D))
         {
             transform.Rotate(0, right, 0);
         }
-        if (Input.GetKey("a"))
+        if (Input.GetKey(KeyCode.A))
         {
             transform.Rotate(0, -right, 0);
         }
