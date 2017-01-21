@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager_origin : MonoBehaviour
 {
     public AudioSource SEroot;
     public List<AudioClip> SEList = new List<AudioClip>();

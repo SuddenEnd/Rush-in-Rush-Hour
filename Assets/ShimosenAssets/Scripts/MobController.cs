@@ -42,9 +42,9 @@ public class MobController : MonoBehaviour {
 		}
 
 		// デバッグ用
-		//if (Input.GetKeyDown(KeyCode.O)) {
-		//	RideTrain();
-		//}
+		if (Input.GetKeyDown(KeyCode.O)) {
+			RideTrain();
+		}
 	}
 
 	// 電車に乗り込み開始するメソッド

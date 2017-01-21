@@ -24,7 +24,7 @@ public class NPCMove : MonoBehaviour {
     {
         agent.SetDestination(target.position);
 
-        if (Mathf.Abs(Vector3.Distance(transform.position, target.transform.position)) < 2f) {
+        if (Mathf.Abs(Vector3.Distance(transform.position, target.transform.position)) < 3f) {
             Destroy(this.gameObject);
         }
     }

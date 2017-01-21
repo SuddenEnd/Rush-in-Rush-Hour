@@ -38,6 +38,7 @@ public class Player_Controller : MonoBehaviour
      void Update()
     {
 
+
         if (bugClearTimer < 1 && !isBugClear)
         {
             transform.Translate(0, 0.000000000000000001f, 0);
@@ -56,15 +57,15 @@ public class Player_Controller : MonoBehaviour
         else
             backRotate = true;
 
-        if (!prepare)
-            PlayerAutoMove();
+/*        if (!prepare)
+       //     PlayerAutoMove();
         else
         {
             autoPosition = transform.position;
             speed = 0;
             prepare = true;
         }
-
+        */
         if (prepare == false) return; 
 
         if (Input.GetKey(KeyCode.W))
@@ -94,7 +95,7 @@ public class Player_Controller : MonoBehaviour
         if (other.gameObject.tag == "NPC")
         {
             stress_point += add_stress_point;
-            Debug.Log(stress_point);
+ //           Debug.Log(stress_point);
  //           if(stress_point>100) SceneManager.LoadScene("Ending");
 
         }
@@ -112,14 +113,27 @@ public class Player_Controller : MonoBehaviour
     {
         if (col.gameObject.tag == "DoorSwitch")
         {
-            col.gameObject.transform.parent.gameObject.GetComponent<Animator>().SetBool("isOpen", true);
-            prepare = false;
+            if (col.transform.parent.GetComponent<TrainStatus>().ID <= GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength) {
+                col.gameObject.transform.parent.gameObject.GetComponent<Animator>().SetBool("isOpen", true);
+            }
         }
-    }
+        if (col.gameObject.tag == "Door")
+        {
+            if (10 > GameObject.Find("TrainManager").GetComponent<TrainManager>().trainCount) {
+                GameObject.Find("TrainManager").GetComponent<TrainManager>().trainCount++;
+            }
+            if (col.transform.parent.GetComponent<TrainStatus>().ID <= GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength)
+            {
+            prepare = false;
+            }
+            Destroy(col.gameObject);
+        }
 
+    }
+/*
     void PlayerAutoMove()
     {
         speed += 2f;
-        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z -18f), speed * Time.deltaTime);
-    }
+        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z - 13.5f), speed * Time.deltaTime);
+    }*/
 }
