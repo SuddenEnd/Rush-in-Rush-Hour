@@ -33,7 +33,7 @@ public class MobController : MonoBehaviour {
 	}
 
 	void Update() {
-		if (Input.GetKeyDown(KeyCode.S)) {
+		if (Input.GetKeyDown(KeyCode.O)) {
 			isRide = true;
 			agent.enabled = true;
 			myTfm.SetParent(null);

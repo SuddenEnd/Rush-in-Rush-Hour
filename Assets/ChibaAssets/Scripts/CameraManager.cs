@@ -21,11 +21,11 @@ public class CameraManager : MonoBehaviour {
                 cameraPosition = this.transform.position;
                 isFirst = true;
             }
-            this.transform.position = Vector3.Lerp(cameraPosition, new Vector3(cameraPosition.x, cameraPosition.y, cameraPosition.z + 13.6f), speed * Time.deltaTime);
+            this.transform.position = Vector3.Lerp(cameraPosition, new Vector3(cameraPosition.x, cameraPosition.y, cameraPosition.z - 13.6f), speed * Time.deltaTime);
         }
 
-        if (Mathf.Abs(Vector3.Distance(this.transform.position, new Vector3(cameraPosition.x, cameraPosition.y, cameraPosition.z + 13.6f))) < 0.5f &&! Player_Controller.prepare) {
-            this.transform.position = new Vector3(cameraPosition.x, cameraPosition.y, cameraPosition.z + 13.6f);
+        if (Mathf.Abs(Vector3.Distance(this.transform.position, new Vector3(cameraPosition.x, cameraPosition.y, cameraPosition.z - 13.6f))) < 0.5f &&! Player_Controller.prepare) {
+            this.transform.position = new Vector3(cameraPosition.x, cameraPosition.y, cameraPosition.z - 13.6f);
             Player_Controller.prepare = true;
             isFirst = false;
             speed = 0;

@@ -23,7 +23,7 @@ public class Platform : MonoBehaviour {
 			if (isScroll) {
 				isScroll = false;
 			} else {
-				//isScroll = true;
+				isScroll = true;
 				Invoke("SpawnAtAlignment", 1.0f);
 
 			}

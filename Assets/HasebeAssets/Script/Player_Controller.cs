@@ -103,6 +103,6 @@ public class Player_Controller : MonoBehaviour
     void PlayerAutoMove()
     {
         speed += 2f;
-        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z + 2), speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z -17.6f), speed * Time.deltaTime);
     }
 }
