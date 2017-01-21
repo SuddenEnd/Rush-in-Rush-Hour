@@ -6,21 +6,55 @@ public class TrainManager : MonoBehaviour {
     public List<GameObject> TrainList = new List<GameObject>();
     [Range(1, 10)]
     public int trainLength;
-
-	// Use this for initialization
-	void Start () {
+    private List<Animator> animatorList = new List<Animator>();
+    private bool isClose;
+    [Range(1, 10)]
+    public float doorLimit;
+    private float doorLimit_memory;
+    
+    // Use this for initialization
+    void Start () {
         for (int i=0; i < trainLength; i++) {
             CreateTrain(i);
         }
+        doorLimit_memory = doorLimit;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Input.GetKeyDown(KeyCode.O))
+            TrainDoorOpen();
+        if (!isClose) {
+            if(doorLimit > 0)
+                doorLimit -= Time.deltaTime;
+            else
+            {
+                doorLimit = doorLimit_memory;
+                TrainDoorClose();
+            }
+        }
 	}
 
     void CreateTrain(int Distance) {
         int trainRandom = Random.Range (0, TrainList.Count);
-        Instantiate(TrainList[trainRandom], new Vector3(0, 0, 50 * Distance), Quaternion.identity);
+        GameObject trainObject = Instantiate(TrainList[trainRandom]) as GameObject;
+        trainObject.transform.position = new Vector3(0, 0, 13.6f * Distance);
+        animatorList.Add(trainObject.transform.FindChild("DoorSet").GetComponent<Animator>());
+    }
+
+    void TrainDoorOpen() {
+        isClose = false;
+        for (int i=0; i < animatorList.Count; i++) {
+            animatorList[i].SetTrigger("Open");
+        }
+    }
+
+    void TrainDoorClose()
+    {
+        isClose = true;
+        for (int i = 0; i < animatorList.Count; i++)
+        {
+            animatorList[i].SetTrigger("Close");
+        }
     }
 }
