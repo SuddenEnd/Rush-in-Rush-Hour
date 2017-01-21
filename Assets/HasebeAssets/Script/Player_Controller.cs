@@ -10,14 +10,9 @@ public class Player_Controller : MonoBehaviour
     public float left= -5f;
     public static int stress_point = 0;
     public int add_stress_point = 10;
-    
     //遷移したい任意のシーン名を入力する
     public string scene;
 
-    public GameObject user;
-    public float power=300f;
-    bool Collision_now;
-    Vector3 other_position;
     //車両移動待機中falseにする
     static public bool prepare;
 
@@ -39,15 +34,10 @@ public class Player_Controller : MonoBehaviour
         prepare = true;
     }
 
-
     // Update is called once per frame
      void Update()
     {
-//<<<<<<< HEAD
-//        if (prepare == false) return;
 
-//        Debug.Log(transform.position);
-//=======
 
         if (bugClearTimer < 1 && !isBugClear)
         {
@@ -67,17 +57,16 @@ public class Player_Controller : MonoBehaviour
         else
             backRotate = true;
 
-        if (!prepare)
-            PlayerAutoMove();
+/*        if (!prepare)
+       //     PlayerAutoMove();
         else
         {
             autoPosition = transform.position;
             speed = 0;
             prepare = true;
         }
-
+        */
         if (prepare == false) return; 
-//>>>>>>> origin/Shimo
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -106,72 +95,45 @@ public class Player_Controller : MonoBehaviour
         if (other.gameObject.tag == "NPC")
         {
             stress_point += add_stress_point;
-            Debug.Log(stress_point);
-//<<<<<<< HEAD
-
-            if (stress_point > 100) SceneManager.LoadScene("Ending");
-
-            if (stress_point > 100) SceneManager.LoadScene("Ending");
-//>>>>>>> origin / Shimo
+ //           Debug.Log(stress_point);
+ //           if(stress_point>100) SceneManager.LoadScene("Ending");
 
         }
     }
 
-//<<<<<<< HEAD
-//    private void OnCollisionStay(Collision other)
-//    {
-
-//        Rigidbody rigidbody = other.gameObject.GetComponent<Rigidbody>();
-
-//        if (other.gameObject.tag == "NPC")
-//        {
-//            other_position = other.transform.position;
-//            Collision_now = true;
-//        }
-//        if (Input.GetKey(KeyCode.J) )
-//        {
-//            Vector3 direction = other_position - transform.position;
-//            rigidbody.AddForce(power* direction.normalized, ForceMode.Force);
-//        }
-//        else Collision_now = false;
-//    } 
-//=======
     void OnCollisionStay(Collision col)
     {
         if (col.gameObject.tag == "Stage")
         {
             transform.parent = col.gameObject.transform.parent.parent;
         }
-
-        Rigidbody rigidbody = col.gameObject.GetComponent<Rigidbody>();
-
-        if (col.gameObject.tag == "NPC")
-        {
-            other_position = col.transform.position;
-            Collision_now = true;
-        }
-        if (Input.GetKey(KeyCode.J))
-        {
-            Vector3 direction = other_position - transform.position;
-            rigidbody.AddForce(power * direction.normalized, ForceMode.Force);
-        }
-        else Collision_now = false;
     }
-
 
     void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.tag == "DoorSwitch")
         {
-            col.gameObject.transform.parent.gameObject.GetComponent<Animator>().SetBool("isOpen", true);
-            prepare = false;
+            if (col.transform.parent.GetComponent<TrainStatus>().ID <= GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength) {
+                col.gameObject.transform.parent.gameObject.GetComponent<Animator>().SetBool("isOpen", true);
+            }
         }
-    }
+        if (col.gameObject.tag == "Door")
+        {
+            if (10 > GameObject.Find("TrainManager").GetComponent<TrainManager>().trainCount) {
+                GameObject.Find("TrainManager").GetComponent<TrainManager>().trainCount++;
+            }
+            if (col.transform.parent.GetComponent<TrainStatus>().ID <= GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength)
+            {
+            prepare = false;
+            }
+            Destroy(col.gameObject);
+        }
 
+    }
+/*
     void PlayerAutoMove()
     {
         speed += 2f;
-        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z -18f), speed * Time.deltaTime);
-    }
-//>>>>>>> origin/Shimo
+        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z - 13.5f), speed * Time.deltaTime);
+    }*/
 }

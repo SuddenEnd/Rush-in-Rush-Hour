@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class TimeManager : MonoBehaviour {
 
+    SoundManager_origin SMO;
+
+
     [Header("ゲームタイム")]
     public float gameTime;
     [Header("到着予告時間")]
@@ -25,17 +28,18 @@ public class TimeManager : MonoBehaviour {
     public static int flashcount = 0;
 
 
-    FlashManager FlashM;
-    Platform PlatF;
+    public FlashManager FlashM;
+    public Platform PlatF;
     TrainManager TrainM;
     NPCManager NPCM;
-    MobController MobC;
+    GameObject[] Mobs;
 
 	// Use this for initialization
 	void Start () {
-        FlashM = GameObject.Find("FlashIcon").GetComponent<FlashManager>();
-        PlatF = GameObject.Find("Platform").GetComponent<Platform>();
-        TrainM = GameObject.Find("Debug_TrainManager").GetComponent<TrainManager>();
+		SMO = GameObject.Find("SoundManager").GetComponent<SoundManager_origin>();
+		//        FlashM = GameObject.Find("FlashIcon").GetComponent<FlashManager>();
+		//        PlatF = GameObject.Find("Platform").GetComponent<Platform>();
+		TrainM = GameObject.Find("Debug_TrainManager").GetComponent<TrainManager>();
         NPCM = GameObject.Find("NPCManager").GetComponent<NPCManager>();
         PlatF.isScroll = true;
     }
@@ -57,13 +61,15 @@ public class TimeManager : MonoBehaviour {
     {
         if(runTime >= runTimememory)
         {
-            StartCoroutine("DoorOpen");      
-        }
+            StartCoroutine("DoorOpen");
+			SMO.SE_Shot(4);
+		}
 
-        if(stopTime >= stopTimememory)
+		if (stopTime >= stopTimememory)
         {
             StartCoroutine("DoorClose");
-        }
+			SMO.SE_Shot(9);
+		}
     }
     void judgetime()
     {
@@ -95,7 +101,10 @@ public class TimeManager : MonoBehaviour {
         TrainM.TrainDoorOpen();
         NPCM.GetOffNPC();
         yield return new WaitForSeconds(2.0f);
-        MobC = GameObject.Find("Mob(Clone)").GetComponent<MobController>();
+		Mobs = GameObject.FindGameObjectsWithTag("Mob");
+		foreach (GameObject mob in Mobs) {
+			mob.GetComponent<MobController>().RideTrain();
+		}
         flashcooltime = false;
         
     }
