@@ -11,6 +11,7 @@ public class MobController : MonoBehaviour {
 	private bool isRide;
 	private bool isRide2;
 	private float speed;
+	private bool inTheTrain;
 
 	private UnityEngine.AI.NavMeshAgent agent;
 
@@ -51,7 +52,7 @@ public class MobController : MonoBehaviour {
 	public void RideTrain() {
 		isRide = true;
 		agent.enabled = true;
-		myTfm.SetParent(null);
+		//myTfm.SetParent(null);
 	}
 
 	void OnCollisionEnter(Collision col) {
@@ -68,6 +69,13 @@ public class MobController : MonoBehaviour {
 			
 			// 第2目的の座標を生成
 			newTargetPos = new Vector3(x, y, z);
+		}
+
+		// 乗り込んだMobは車両の子要素になる
+		if (col.gameObject.CompareTag("Stage")) {
+			inTheTrain = true;
+			myTfm.SetParent(col.transform.parent.parent);
+			//Debug.Log(col.transform.parent.parent.name);
 		}
 	}
 
