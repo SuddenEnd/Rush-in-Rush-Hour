@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MobController : MonoBehaviour {
 
+	private TimeManager TimeMng;
 	private GameObject[] targets;
 	private GameObject target;
 	private Transform myTfm;
@@ -15,6 +16,7 @@ public class MobController : MonoBehaviour {
 	private UnityEngine.AI.NavMeshAgent agent;
 
 	void Start() {
+		TimeMng = GameObject.Find("TimeManager").GetComponent<TimeManager>();
 		speed = 2.0f;
 		myTfm = transform;
 		targets = GameObject.FindGameObjectsWithTag("Target");
@@ -33,15 +35,23 @@ public class MobController : MonoBehaviour {
 
 	void Update() {
 		// 第1目的地へ
-		if (isRide1) {
+		if (isRide1 && agent.enabled) {
 			//Debug.Log("hoge1");
 			agent.SetDestination(target.transform.position);
+		}else if(isRide1 && !agent.enabled){
+			// 乗り遅れたら死ぬのさ(精度悪い)
+			if (myTfm.position.x <= -0.9f && !TimeMng.Running) {
+				Destroy(gameObject);
+			}
+			//Debug.Log(myTfm.position.x);
 		}
 		// 第2目的地へ
 		if (isRide2) {
 			//Debug.Log("hoge2");
 			myTfm.position = Vector3.MoveTowards(myTfm.position, newTargetPos, speed * Time.deltaTime);
 		}
+
+
 
 		// デバッグ用
 		if (Input.GetKeyDown(KeyCode.O)) {
@@ -61,7 +71,7 @@ public class MobController : MonoBehaviour {
 			// 最初のターゲットに接触したら、第2目的地へ
 			if (col.gameObject.CompareTag("Target")) {
 
-				isRide1 = false;
+				//isRide1 = false;
 				isRide2 = true;
 				agent.enabled = false;
 
