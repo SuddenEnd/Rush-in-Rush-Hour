@@ -12,7 +12,7 @@ public class Unitychang : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("up"))
+        if (Input.GetKey("w"))
         {
             //transform.position += transform.forward * 0.01f;
             animator.SetBool("is_running", true);
@@ -21,11 +21,11 @@ public class Unitychang : MonoBehaviour {
         {
             animator.SetBool("is_running", false);
         }
-        if (Input.GetKey("right"))
+        if (Input.GetKey("d"))
         {
             //transform.Rotate(0, 10, 0);
         }
-        if (Input.GetKey("left"))
+        if (Input.GetKey("a"))
         {
             //transform.Rotate(0, -10, 0);
         }
