@@ -39,7 +39,7 @@ public class TimeManager : MonoBehaviour {
 		SMO = GameObject.Find("SoundManager").GetComponent<SoundManager_origin>();
 		//        FlashM = GameObject.Find("FlashIcon").GetComponent<FlashManager>();
 		//        PlatF = GameObject.Find("Platform").GetComponent<Platform>();
-		TrainM = GameObject.Find("Debug_TrainManager").GetComponent<TrainManager>();
+		TrainM = GameObject.Find("TrainManager").GetComponent<TrainManager>();
         NPCM = GameObject.Find("NPCManager").GetComponent<NPCManager>();
         PlatF.isScroll = true;
     }
