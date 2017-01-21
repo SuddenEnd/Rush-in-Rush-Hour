@@ -19,6 +19,8 @@ public class Player_Controller : MonoBehaviour
     //千葉追加分
     private Vector3 autoPosition;
 
+    public GageManager GageM;
+
     private GameObject m_camera;
     public bool backRotate;
     private bool isBugClear;
@@ -30,6 +32,7 @@ public class Player_Controller : MonoBehaviour
         backRotate = false;
         m_camera = GameObject.Find("Main Camera");
         prepare = true;
+
     }
 
     // Update is called once per frame
@@ -83,7 +86,8 @@ public class Player_Controller : MonoBehaviour
     {
         if (other.gameObject.tag == "NPC")
         {
-            stress_point += add_stress_point;
+            GageM.StressUp();
+            
  //           Debug.Log(stress_point);
  //           if(stress_point>100) SceneManager.LoadScene("Ending");
 
