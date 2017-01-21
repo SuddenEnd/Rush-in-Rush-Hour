@@ -1,0 +1,255 @@
+fileFormatVersion: 2
+guid: 6168d554bc3606e4c82697c1b40cabf1
+timeCreated: 1485015377
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Head
+    100002: HeadTop
+    100004: Hips
+    100006: ikHandle3
+    100008: ikHandle4
+    100010: LeftArm
+    100012: LeftHand
+    100014: LeftLeg
+    100016: LeftLegTop
+    100018: LeftUpArm
+    100020: LeftUpLeg
+    100022: Neck
+    100024: pCylinder1
+    100026: pCylinder5
+    100028: polySurface10
+    100030: polySurface2
+    100032: polySurface4
+    100034: polySurface5
+    100036: polySurface6
+    100038: polySurface7
+    100040: polySurface8
+    100042: polySurface9
+    100044: pSphere1
+    100046: RightArm
+    100048: RightHand
+    100050: RightLeg
+    100052: RightLegTop
+    100054: RightUpArm
+    100056: RightUpLeg
+    100058: Spine
+    100060: Spine2
+    100062: //RootNode
+    400000: Head
+    400002: HeadTop
+    400004: Hips
+    400006: ikHandle3
+    400008: ikHandle4
+    400010: LeftArm
+    400012: LeftHand
+    400014: LeftLeg
+    400016: LeftLegTop
+    400018: LeftUpArm
+    400020: LeftUpLeg
+    400022: Neck
+    400024: pCylinder1
+    400026: pCylinder5
+    400028: polySurface10
+    400030: polySurface2
+    400032: polySurface4
+    400034: polySurface5
+    400036: polySurface6
+    400038: polySurface7
+    400040: polySurface8
+    400042: polySurface9
+    400044: pSphere1
+    400046: RightArm
+    400048: RightHand
+    400050: RightLeg
+    400052: RightLegTop
+    400054: RightUpArm
+    400056: RightUpLeg
+    400058: Spine
+    400060: Spine2
+    400062: //RootNode
+    4300000: pSphere1
+    4300002: polySurface9
+    4300004: polySurface10
+    4300006: polySurface5
+    4300008: polySurface6
+    4300010: polySurface2
+    4300012: polySurface4
+    4300014: polySurface7
+    4300016: polySurface8
+    4300018: pCylinder1
+    4300020: pCylinder5
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: pCylinder1
+    13700002: pCylinder5
+    13700004: polySurface10
+    13700006: polySurface2
+    13700008: polySurface4
+    13700010: polySurface5
+    13700012: polySurface6
+    13700014: polySurface7
+    13700016: polySurface8
+    13700018: polySurface9
+    13700020: pSphere1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Hips
+        weight: 1
+      - path: Hips/LeftUpLeg
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg
+        weight: 1
+      - path: Hips/LeftUpLeg/LeftLeg/LeftLegTop
+        weight: 1
+      - path: Hips/RightUpLeg
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg
+        weight: 1
+      - path: Hips/RightUpLeg/RightLeg/RightLegTop
+        weight: 1
+      - path: Hips/Spine
+        weight: 1
+      - path: Hips/Spine/Spine2
+        weight: 1
+      - path: Hips/Spine/Spine2/LeftUpArm
+        weight: 1
+      - path: Hips/Spine/Spine2/LeftUpArm/LeftArm
+        weight: 1
+      - path: Hips/Spine/Spine2/LeftUpArm/LeftArm/LeftHand
+        weight: 1
+      - path: Hips/Spine/Spine2/Neck
+        weight: 1
+      - path: Hips/Spine/Spine2/Neck/Head
+        weight: 1
+      - path: Hips/Spine/Spine2/Neck/Head/HeadTop
+        weight: 1
+      - path: Hips/Spine/Spine2/RightUpArm
+        weight: 1
+      - path: Hips/Spine/Spine2/RightUpArm/RightArm
+        weight: 1
+      - path: Hips/Spine/Spine2/RightUpArm/RightArm/RightHand
+        weight: 1
+      - path: ikHandle3
+        weight: 1
+      - path: ikHandle4
+        weight: 1
+      - path: pCylinder1
+        weight: 1
+      - path: pCylinder5
+        weight: 1
+      - path: polySurface2
+        weight: 1
+      - path: polySurface4
+        weight: 1
+      - path: polySurface5
+        weight: 1
+      - path: polySurface6
+        weight: 1
+      - path: polySurface7
+        weight: 1
+      - path: polySurface8
+        weight: 1
+      - path: polySurface9
+        weight: 1
+      - path: polySurface10
+        weight: 1
+      - path: pSphere1
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

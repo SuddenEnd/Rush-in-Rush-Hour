@@ -8,11 +8,13 @@ public class GageManager : MonoBehaviour {
     Player_Controller PC;
     public Sprite stressgage;
     float Stressmeter;
+    public float Stressmemory;
 
     // Use this for initialization
     void Start () {
+        Stressmemory = this.transform.FindChild("Stressgage").gameObject.GetComponent<Image>().fillAmount;
         this.transform.FindChild("Stressgage").gameObject.GetComponent<Image>().sprite = stressgage;
-        this.transform.FindChild("Stressgage").gameObject.GetComponent<Image>().fillAmount = Stressmeter;
+        Stressmemory = Stressmeter;
     }
 	
 	// Update is called once per frame
@@ -27,6 +29,6 @@ public class GageManager : MonoBehaviour {
     public void StressUp()
     {
         Stressmeter = Player_Controller.stress_point / 100.0f;
-        this.transform.FindChild("Stressgage").gameObject.GetComponent<Image>().fillAmount = Stressmeter;
+        Stressmemory = Stressmeter;
     }
 }
