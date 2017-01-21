@@ -14,6 +14,10 @@ public class mainLoadScript : MonoBehaviour
     Button btn;
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/CHIBA
     //public void Update()
     //{
     //    if (now_lang == "Japanese")
