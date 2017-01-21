@@ -104,7 +104,7 @@ public class Player_Controller : MonoBehaviour
     {
         if (col.gameObject.tag == "Stage")
         {
-            transform.parent = col.gameObject.transform.parent;
+            transform.parent = col.gameObject.transform.parent.parent;
         }
     }
 
@@ -120,6 +120,6 @@ public class Player_Controller : MonoBehaviour
     void PlayerAutoMove()
     {
         speed += 2f;
-        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z -17.6f), speed * Time.deltaTime);
+        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z -18f), speed * Time.deltaTime);
     }
 }
