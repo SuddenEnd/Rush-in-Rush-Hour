@@ -20,16 +20,6 @@ public class mainLoadScript : MonoBehaviour
         SMO = GameObject.Find("SoundManager").GetComponent<SoundManager_origin>();
     }
 
-    public void Update()
-    {
-        if (now_lang == "Japanese")
-        {
-            btn = GetComponent<Button>();
-            GetComponentInChildren<Text>().text = "START";
-        }
-    }
-
-
     public void LoadMain()
     {
         SMO.SE_Shot(10);
