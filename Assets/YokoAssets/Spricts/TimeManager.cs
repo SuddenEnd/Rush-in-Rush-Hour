@@ -18,7 +18,7 @@ public class TimeManager : MonoBehaviour {
     [Header("停車時間")]
     public float stopTimememory;
 
-    private bool Running = true;
+    public bool Running = true;
     
     private float runTime;    
     private float stopTime;

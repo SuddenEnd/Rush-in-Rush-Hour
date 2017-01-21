@@ -53,6 +53,11 @@ public class Platform : MonoBehaviour {
 		if (isScroll) {
 			if (!loadOnce) {
 				loadOnce = true;
+
+				foreach (Transform child in myTfm) {
+					Debug.Log(child.name);
+				}
+
 				Invoke("SpawnAtAlignment", 1.0f);
 			}
 		} else {
