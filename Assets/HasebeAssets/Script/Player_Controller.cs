@@ -22,9 +22,12 @@ public class Player_Controller : MonoBehaviour
     private float speed_debug;
     private GameObject m_camera;
     public bool backRotate;
+    private bool isBugClear;
+    private float bugClearTimer;
     // Use this for initialization
     void Start()
     {
+        bugClearTimer = 0;
         backRotate = false;
         m_camera = GameObject.Find("Main Camera");
         speed = 0;
@@ -34,6 +37,20 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
      void Update()
     {
+
+        if (bugClearTimer < 1 && !isBugClear)
+        {
+            transform.Translate(0, 0.000000000000000001f, 0);
+            isBugClear = false;
+            bugClearTimer += Time.deltaTime;
+        }
+        else if (bugClearTimer > 0 && isBugClear)
+        {
+            transform.Translate(0, -0.000000000000000001f, 0);
+            isBugClear = true;
+            bugClearTimer -= Time.deltaTime;
+        }
+
         if (transform.eulerAngles.y > 270 || transform.eulerAngles.y < 90)
             backRotate = false;
         else
