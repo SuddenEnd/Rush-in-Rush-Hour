@@ -5,8 +5,9 @@ using UnityEngine;
 public class MobController : MonoBehaviour {
 
 	private GameObject[] targets;
+	private GameObject target;
 	private Transform myTfm;
-	private int rnd;
+	//private int rnd;
 	private bool isRide;
 
 	private UnityEngine.AI.NavMeshAgent agent;
@@ -14,7 +15,17 @@ public class MobController : MonoBehaviour {
 	void Start() {
 		myTfm = transform;
 		targets = GameObject.FindGameObjectsWithTag("Target");
-		rnd = Random.Range(0, targets.Length);
+
+		float sqrDist = 99.9f;
+
+		foreach (GameObject target in targets) {
+			if (((myTfm.position - target.transform.position).sqrMagnitude) < sqrDist) {
+				this.target = target;
+				sqrDist = (myTfm.position - target.transform.position).sqrMagnitude;
+			}
+		}
+
+		//rnd = Random.Range(0, targets.Length);
 
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
 		//agent.enabled = false;
@@ -31,7 +42,7 @@ public class MobController : MonoBehaviour {
 
 
 		if (isRide) {
-			agent.SetDestination(targets[rnd].transform.position);
+			agent.SetDestination(target.transform.position);
 		}
 	}
 
@@ -40,7 +51,11 @@ public class MobController : MonoBehaviour {
 		//Debug.Log(col.gameObject.tag);
 
 		if (col.gameObject.CompareTag("Target")) {
-			Destroy(gameObject);
+			//Destroy(gameObject);
+		}
+
+		if (col.gameObject.CompareTag("Finish")) {
+			Debug.Log(col.gameObject.tag);
 		}
 
 	}
