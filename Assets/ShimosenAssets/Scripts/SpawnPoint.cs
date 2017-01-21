@@ -11,11 +11,15 @@ public class SpawnPoint : MonoBehaviour {
 		Mob = Resources.Load("Mob") as GameObject;
 		spawnPoint = gameObject.transform.position;
 		//Instantiate(Mob, gameObject.transform.position, Quaternion.identity);
-		StartCoroutine("Spawn");
+		//StartCoroutine("Spawn");
 	}
 
 	void Update () {
 		//Instantiate(Mob, gameObject.transform.position, Quaternion.identity);
+
+		if (Input.GetKeyDown(KeyCode.A)) {
+			SpawnAtAlignment();
+		}
 
 	}
 
@@ -25,5 +29,14 @@ public class SpawnPoint : MonoBehaviour {
 			yield return new WaitForSeconds(1f);
 		}
 
+	}
+
+	void SpawnAtAlignment() {
+		GameObject[] aligns = GameObject.FindGameObjectsWithTag("Alignment");
+
+		foreach (GameObject align in aligns) {
+			Instantiate(Mob, align.transform.position, Quaternion.identity);
+
+		}
 	}
 }
