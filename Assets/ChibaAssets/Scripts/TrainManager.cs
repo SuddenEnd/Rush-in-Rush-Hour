@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TrainManager : MonoBehaviour {
     public List<GameObject> TrainList = new List<GameObject>();
     [Range(0, 10)]
     public int trainLength;
-    private List<Animator> animatorList = new List<Animator>();
+    public List<Animator> animatorList = new List<Animator>();
     private bool isClose;
     [Range(1, 10)]
     public float doorLimit;
@@ -14,9 +15,12 @@ public class TrainManager : MonoBehaviour {
     public GameObject trainSet;
     public int trainCount;
     private int trainCount_memory;
+    public Text whatTrainNumber;
+    static public int trainNum;
 
     // Use this for initialization
     void Start () {
+        trainNum = 1;
         isClose = true;
         for (int i=0; i < trainCount; i++) {
             CreateTrain(i);
@@ -28,6 +32,7 @@ public class TrainManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        whatTrainNumber.text = "" + (trainNum) + "両目";
         if (trainCount != trainCount_memory) {
             CreateTrain(trainCount - 1);
         }
@@ -59,6 +64,7 @@ public class TrainManager : MonoBehaviour {
     public void TrainDoorOpen() {
         isClose = false;
         for (int i=0; i < animatorList.Count; i++) {
+            if (animatorList[i] == null) return;
             animatorList[i].SetTrigger("Open");
         }
     }
@@ -68,6 +74,7 @@ public class TrainManager : MonoBehaviour {
         isClose = true;
         for (int i = 0; i < animatorList.Count; i++)
         {
+            if (animatorList[i] == null) return;
             animatorList[i].SetTrigger("Close");
         }
     }

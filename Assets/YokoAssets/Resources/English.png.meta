@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 552830b2ad26a85439efb0dc09072bf7
 timeCreated: 1485017638
+=======
+guid: 5647ab09bb5ca9544a020452835e5f6c
+timeCreated: 1485014409
+>>>>>>> origin/yokochan
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}

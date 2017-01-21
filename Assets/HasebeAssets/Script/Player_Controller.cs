@@ -18,8 +18,7 @@ public class Player_Controller : MonoBehaviour
 
     //千葉追加分
     private Vector3 autoPosition;
-    private float speed;
-    private float speed_debug;
+
     private GameObject m_camera;
     public bool backRotate;
     private bool isBugClear;
@@ -30,7 +29,6 @@ public class Player_Controller : MonoBehaviour
         bugClearTimer = 0;
         backRotate = false;
         m_camera = GameObject.Find("Main Camera");
-        speed = 0;
         prepare = true;
     }
 
@@ -57,15 +55,6 @@ public class Player_Controller : MonoBehaviour
         else
             backRotate = true;
 
-/*        if (!prepare)
-       //     PlayerAutoMove();
-        else
-        {
-            autoPosition = transform.position;
-            speed = 0;
-            prepare = true;
-        }
-        */
         if (prepare == false) return; 
 
         if (Input.GetKey(KeyCode.W))
@@ -113,8 +102,11 @@ public class Player_Controller : MonoBehaviour
     {
         if (col.gameObject.tag == "DoorSwitch")
         {
-            if (col.transform.parent.GetComponent<TrainStatus>().ID <= GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength) {
+            if (col.transform.parent.GetComponent<TrainStatus>().ID < GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength - 1) {
                 col.gameObject.transform.parent.gameObject.GetComponent<Animator>().SetBool("isOpen", true);
+                TrainManager.trainNum++;
+                Destroy(col.gameObject);
+
             }
         }
         if (col.gameObject.tag == "Door")
@@ -122,18 +114,12 @@ public class Player_Controller : MonoBehaviour
             if (10 > GameObject.Find("TrainManager").GetComponent<TrainManager>().trainCount) {
                 GameObject.Find("TrainManager").GetComponent<TrainManager>().trainCount++;
             }
-            if (col.transform.parent.GetComponent<TrainStatus>().ID <= GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength)
+            if (col.transform.parent.GetComponent<TrainStatus>().ID < GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength - 1)
             {
-            prepare = false;
+                prepare = false;
             }
             Destroy(col.gameObject);
         }
 
     }
-/*
-    void PlayerAutoMove()
-    {
-        speed += 2f;
-        transform.position = Vector3.Lerp(autoPosition, new Vector3(0, autoPosition.y, autoPosition.z - 13.5f), speed * Time.deltaTime);
-    }*/
 }
