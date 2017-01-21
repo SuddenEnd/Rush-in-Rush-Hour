@@ -78,7 +78,7 @@ public class Player_Controller : MonoBehaviour
         {
             stress_point += add_stress_point;
             Debug.Log(stress_point);
-            if(stress_point>100) SceneManager.LoadScene("Ending");
+ //           if(stress_point>100) SceneManager.LoadScene("Ending");
 
         }
     }
