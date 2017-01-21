@@ -12,14 +12,14 @@ public class mainLoadScript : MonoBehaviour
     string now_lang = Change_lang_Button.now_lang;
     Button btn;
 
-    public void Update()
-    {
-        if (now_lang == "Japanese")
-        {
-            btn = GetComponent<Button>();
-            GetComponentInChildren<Text>().text = "START";
-        }
-    }
+    //public void Update()
+    //{
+    //    if (now_lang == "Japanese")
+    //    {
+    //        btn = GetComponent<Button>();
+    //        GetComponentInChildren<Text>().text = "START";
+    //    }
+    //}
 
     public void LoadMain()
     {
