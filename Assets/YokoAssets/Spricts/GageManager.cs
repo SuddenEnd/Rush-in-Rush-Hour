@@ -25,7 +25,7 @@ public class GageManager : MonoBehaviour {
     public void StressUp()
     {
         Player_Controller.stress_point += /*PC.add_stress_point*/1;
-        Stressmeter = Player_Controller.stress_point / 100.0f;
+        Stressmeter = Player_Controller.stress_point / 1000.0f;
         this.transform.FindChild("Stressgage").gameObject.GetComponent<Image>().fillAmount = Stressmeter;
     }
 }
