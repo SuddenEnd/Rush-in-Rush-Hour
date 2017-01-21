@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour {
 
+	public bool isScroll;
+
 	private GameObject[] aligns;
 	private List<GameObject> sortedAligns = new List<GameObject>();
 	private GameObject mobObj;
 	private Transform myTfm;
 	private Animator myAnim;
-	private bool isScroll;
 	private int mobNum;
+	private bool loadOnce;
 
 	// 乗り込む人数（最大40）
 	private int MobNum {
@@ -41,16 +43,20 @@ public class Platform : MonoBehaviour {
 		}
 	}
 
+
 	void Update () {
-
 		if (Input.GetKeyDown(KeyCode.Space)) {
-			if (isScroll) {
-				isScroll = false;
-			} else {
-				isScroll = true;
-				Invoke("SpawnAtAlignment", 1.0f);
+			isScroll = !isScroll;
+		}
+		
 
+		if (isScroll) {
+			if (!loadOnce) {
+				loadOnce = true;
+				Invoke("SpawnAtAlignment", 1.0f);
 			}
+		} else {
+			loadOnce = false;
 		}
 
 		myAnim.SetBool("Scroll", isScroll);
