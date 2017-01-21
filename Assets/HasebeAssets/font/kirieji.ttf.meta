@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 14372a9470529fc4fa87371abe32bf83
+timeCreated: 1485007207
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: kirieji
+  fontNames:
+  - kirieji
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
