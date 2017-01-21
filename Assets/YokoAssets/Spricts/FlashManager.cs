@@ -51,6 +51,10 @@ public class FlashManager : MonoBehaviour {
         Signal.sprite = SignalOn;
         yield return new WaitForSeconds(Flashtime);
         Signal.sprite = SignalOff;
-        TimeManager.flashcount++;
+        if(TimeManager.flashcount < 4)
+        {
+            TimeManager.flashcount++;
+        }
+        
     }
 }
