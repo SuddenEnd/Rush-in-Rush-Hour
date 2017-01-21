@@ -16,7 +16,7 @@ public class TrainStatus : MonoBehaviour {
         if (lifeTimer < 1 && ID > 2) {
             transform.position = new Vector3(0, 0, 13.6f * 2);
         }
-        if (GameObject.Find("TrainManager").GetComponent<TrainManager>().trainCount - 5 >= ID) {
+        if (GameObject.Find("TrainManager").GetComponent<TrainManager>().trainCount - 7 >= ID) {
             destroyLag += Time.deltaTime;
             if(destroyLag > 0.1f)
                Destroy(this.gameObject);
