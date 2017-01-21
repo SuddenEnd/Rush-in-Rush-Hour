@@ -13,16 +13,8 @@ public class mainLoadScript : MonoBehaviour
     string now_lang = Change_lang_Button.now_lang;
     Button btn;
 
-<<<<<<< HEAD
-    //public void Update()
-    //{
-    //    if (now_lang == "Japanese")
-    //    {
-    //        btn = GetComponent<Button>();
-    //        GetComponentInChildren<Text>().text = "START";
-    //    }
-    //}
-=======
+
+
     private void Start()
     {
         SMO = GameObject.Find("SoundManager").GetComponent<SoundManager_origin>();
@@ -36,7 +28,7 @@ public class mainLoadScript : MonoBehaviour
             GetComponentInChildren<Text>().text = "START";
         }
     }
->>>>>>> origin/CHIBA
+
 
     public void LoadMain()
     {
