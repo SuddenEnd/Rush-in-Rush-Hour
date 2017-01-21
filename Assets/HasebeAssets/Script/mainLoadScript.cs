@@ -13,11 +13,6 @@ public class mainLoadScript : MonoBehaviour
     string now_lang = Change_lang_Button.now_lang;
     Button btn;
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/CHIBA
     //public void Update()
     //{
     //    if (now_lang == "Japanese")
