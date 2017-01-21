@@ -10,16 +10,24 @@ public class Player_Controller : MonoBehaviour
     public float left= -5f;
     public static int stress_point;
     public int add_stress_point = 10;
+    
     //遷移したい任意のシーン名を入力する
     public string scene;
 
+7    public GameObject user;
+    public float power=300f;
+    bool Collision_now;
+    Vector3 other_position;
     //車両移動待機中falseにする
     static bool prepare=true;
+
 
     // Update is called once per frame
     void Update()
     {
-        if (prepare == false) return; 
+        if (prepare == false) return;
+
+        Debug.Log(transform.position);
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -44,8 +52,27 @@ public class Player_Controller : MonoBehaviour
         {
             stress_point += add_stress_point;
             Debug.Log(stress_point);
+
             if(stress_point>100) SceneManager.LoadScene("Ending");
 
         }
     }
+
+    private void OnCollisionStay(Collision other)
+    {
+
+        Rigidbody rigidbody = other.gameObject.GetComponent<Rigidbody>();
+
+        if (other.gameObject.tag == "NPC")
+        {
+            other_position = other.transform.position;
+            Collision_now = true;
+        }
+        if (Input.GetKey(KeyCode.J) )
+        {
+            Vector3 direction = other_position - transform.position;
+            rigidbody.AddForce(power* direction.normalized, ForceMode.Force);
+        }
+        else Collision_now = false;
+    } 
 }

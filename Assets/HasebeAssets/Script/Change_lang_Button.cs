@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Change_lang_Button : MonoBehaviour
 {
-    static public string now_lang = "Japanese";
+    static public string now_lang = "English";
 
     //public void onClick()
     //{
