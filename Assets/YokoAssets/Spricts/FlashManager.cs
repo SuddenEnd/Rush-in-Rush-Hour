@@ -13,13 +13,13 @@ public class FlashManager : MonoBehaviour {
     public float Flashtime;
     private Image Signal;
 
-    
+    TimeManager TManager;
     
 
     // Use this for initialization
     void Start()
     {
-        
+        TManager = GameObject.Find("TimeManager").GetComponent<TimeManager>();
     }
 
     // Update is called once per frame
@@ -51,6 +51,10 @@ public class FlashManager : MonoBehaviour {
         Signal.sprite = SignalOn;
         yield return new WaitForSeconds(Flashtime);
         Signal.sprite = SignalOff;
+        if(TimeManager.flashcount == 4)
+        {
+            TManager.GameTimeUp();
+        }
         if(TimeManager.flashcount < 4)
         {
             TimeManager.flashcount++;

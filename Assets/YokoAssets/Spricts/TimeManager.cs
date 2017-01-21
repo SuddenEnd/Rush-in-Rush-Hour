@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour {
 
@@ -25,6 +26,7 @@ public class TimeManager : MonoBehaviour {
     private bool flashcooltime = false;
 
     public static int flashcount = 0;
+    public static bool TimeUpflag = false;
 
 
     public FlashManager FlashM;
@@ -35,7 +37,10 @@ public class TimeManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SMO = GameObject.Find("SoundManager").GetComponent<SoundManager_origin>();
+        flashcooltime = false;
+        flashcount = 0;
+        TimeUpflag = false;
+        SMO = GameObject.Find("SoundManager").GetComponent<SoundManager_origin>();
 		//        FlashM = GameObject.Find("FlashIcon").GetComponent<FlashManager>();
 		//        PlatF = GameObject.Find("Platform").GetComponent<Platform>();
 		TrainM = GameObject.Find("TrainManager").GetComponent<TrainManager>();
@@ -93,6 +98,11 @@ public class TimeManager : MonoBehaviour {
 
     }
 
+    public void GameTimeUp()
+    {
+        StartCoroutine("Onerest");
+    }
+
     private IEnumerator DoorOpen()
     {
         PlatF.isScroll = false;
@@ -116,6 +126,12 @@ public class TimeManager : MonoBehaviour {
         yield return new WaitForSeconds(2.5f);
         Running = true;
         PlatF.isScroll = true;
+    }
 
+    private IEnumerator Onerest()
+    {
+        yield return new WaitForSeconds(4.0f);
+        TimeUpflag = true;
+        SceneManager.LoadScene("Ending");
     }
 }
