@@ -19,7 +19,7 @@ public class EndingScenario : MonoBehaviour
     {
         int resultStresspoint = Player_Controller.stress_point;
 
-        if (resultStresspoint > 100) scenarioLabel = "GameOver_stress";
+        if (resultStresspoint >= 100) scenarioLabel = "GameOver_stress";
         else if (resultStresspoint > 60) scenarioLabel = "Badend";
         else if (resultStresspoint > 40) scenarioLabel = "Nomalend";
         else scenarioLabel = "Goodend";
