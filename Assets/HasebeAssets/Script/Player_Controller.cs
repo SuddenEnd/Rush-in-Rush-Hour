@@ -8,6 +8,7 @@ public class Player_Controller : MonoBehaviour
     public float vel=0.10f;
     public float right=5f;
     public float left= -5f;
+    //乗客と接触すると上昇するストレス値
     public static int stress_point = 0;
     public int add_stress_point = 10;
     //遷移したい任意のシーン名を入力する
@@ -41,8 +42,6 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
      void Update()
     {
-
-
         if (bugClearTimer < 1 && !isBugClear)
         {
             transform.Translate(0, 0.000000000000000001f, 0);
@@ -83,6 +82,9 @@ public class Player_Controller : MonoBehaviour
         {
             transform.Rotate(0, -right, 0);
         }
+
+        if (TimeManager.TimeUpflag) SceneManager.LoadScene("Ending");
+
     }
 
     void OnCollisionStay(Collision other)

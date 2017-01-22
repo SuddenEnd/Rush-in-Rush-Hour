@@ -16,6 +16,7 @@ public class Explain_btn : MonoBehaviour {
     {
         btn = GetComponent<Image>();
 
+        //言語に応じてjapanese,englishに入った画像を表示
         if (Change_lang_Button.now_lang == "Japanese")
         {
             btn.sprite = japanese;
@@ -24,7 +25,7 @@ public class Explain_btn : MonoBehaviour {
     }
 
     public void LoadMain()
-    {
+    {   
         SceneManager.LoadScene(scene);
     }
 
