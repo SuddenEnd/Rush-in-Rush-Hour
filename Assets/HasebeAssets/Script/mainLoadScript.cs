@@ -39,4 +39,10 @@ public class mainLoadScript : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
+    public void ToCredit()
+    {
+        SMO.SE_Shot(10);
+        SceneManager.LoadScene("Credit");
+    }
+
 }

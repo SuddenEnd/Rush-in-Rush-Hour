@@ -25,7 +25,7 @@ public class SoundManager_origin : MonoBehaviour
 
     public void Update()
     {
-        if (Application.loadedLevelName == "Prologue")
+        if (Application.loadedLevelName == "Prologue" || Application.loadedLevelName == "Credit")
         {
             SEroot.Stop();
             isBgm = false;

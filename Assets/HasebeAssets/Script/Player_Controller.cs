@@ -32,6 +32,7 @@ public class Player_Controller : MonoBehaviour
 	// 下荒磯追加分
 	public static bool isLeftGameOver;
 	public Platform pltfrm;
+    public Animator gage;
 
 	// Use this for initialization
 	void Start()
@@ -48,6 +49,13 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
      void Update()
     {
+        if (transform.position.x < -2.75f) {
+            gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        }
+        if (transform.position.x < -2.75f)
+        {
+            transform.position = new Vector3(-2.65f, transform.position.y, transform.position.z);
+        }
         if (transform.position.x > 0.75f)
             transform.position = new Vector3(0.65f, transform.position.y, transform.position.z);
         if (transform.position.x < -0.75f && transform.position.x > -0.85f && TimeManager.Running)
@@ -118,7 +126,8 @@ public class Player_Controller : MonoBehaviour
             GageM.StressUp();
             
  //           Debug.Log(stress_point);
-            if(stress_point>2000) SceneManager.LoadScene("Ending");
+            if(stress_point>4500) SceneManager.LoadScene("Ending");
+            if (stress_point > 4000) gage.SetBool("isPinch", true) ;
 
         }
     }

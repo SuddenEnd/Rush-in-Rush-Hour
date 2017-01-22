@@ -73,8 +73,8 @@ public class TrainManager : MonoBehaviour {
     public void TrainDoorOpen() {
         isClose = false;
         for (int i=0; i < animatorList.Count; i++) {
-            if (animatorList[i] == null) return;
-            animatorList[i].SetBool("isOpen", true);
+            if (animatorList[i] != null)
+                animatorList[i].SetBool("isOpen", true);
         }
     }
 
@@ -83,8 +83,8 @@ public class TrainManager : MonoBehaviour {
         isClose = true;
         for (int i = 0; i < animatorList.Count; i++)
         {
-            if (animatorList[i] == null) return;
-            animatorList[i].SetBool("isOpen", false);
+            if (animatorList[i] != null)
+                animatorList[i].SetBool("isOpen", false);
         }
     }
 }

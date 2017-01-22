@@ -12,6 +12,9 @@ public class EndingScenario : MonoBehaviour
     string scenarioLabel;
     //遷移したい任意のシーン名を入力する
     public string scene;
+    public GameObject clear;
+    public GameObject over;
+    private bool isClear;
 
     // Use this for initialization
     void Start()
@@ -23,20 +26,20 @@ public class EndingScenario : MonoBehaviour
         if(Change_lang_Button.now_lang == "Japanese") {
             if (Player_Controller.isLeftGameOver) { scenarioLabel = "GameOver_timeup"; SMO.SE_Shot(3); }
             else if (TimeManager.TimeUpflag) { scenarioLabel = "GameOver_timeup"; SMO.SE_Shot(3); }
-            else if (resultStresspoint >= 1000) { scenarioLabel = "GameOver_stress"; SMO.SE_Shot(3); }
-            else if (resultStresspoint > 600) { scenarioLabel = "Badend"; SMO.SE_Shot(3); }
-            else if (resultStresspoint > 400) { scenarioLabel = "Nomalend"; SMO.SE_Shot(3); }
-            else { scenarioLabel = "Goodend"; SMO.SE_Shot(2); }
+            else if (resultStresspoint >= 4500) { scenarioLabel = "GameOver_stress"; SMO.SE_Shot(3); }
+            else if (resultStresspoint > 2700) { scenarioLabel = "Badend"; SMO.SE_Shot(3); isClear = true; }
+            else if (resultStresspoint > 1800) { scenarioLabel = "Nomalend"; SMO.SE_Shot(2); isClear = true; }
+            else { scenarioLabel = "Goodend"; SMO.SE_Shot(2); isClear = true; }
         }
 
         else
         {
             if (Player_Controller.isLeftGameOver) { scenarioLabel = "GameOver_timeup_Eng"; SMO.SE_Shot(3); }
             else if (TimeManager.TimeUpflag) { scenarioLabel = "GameOver_timeup_Eng"; SMO.SE_Shot(3); }
-            else if (resultStresspoint >= 1000) { scenarioLabel = "GameOver_stress_Eng"; SMO.SE_Shot(3); }
-            else if (resultStresspoint > 600) { scenarioLabel = "Badend_Eng"; SMO.SE_Shot(3); }
-            else if (resultStresspoint > 400) { scenarioLabel = "Nomalend_Eng"; SMO.SE_Shot(3); }
-            else { scenarioLabel = "Goodend_Eng"; SMO.SE_Shot(2); }
+            else if (resultStresspoint >= 4500) { scenarioLabel = "GameOver_stress_Eng"; SMO.SE_Shot(3); }
+            else if (resultStresspoint > 2700) { scenarioLabel = "Badend_Eng"; SMO.SE_Shot(3); isClear = true; }
+            else if (resultStresspoint > 1800) { scenarioLabel = "Nomalend_Eng"; SMO.SE_Shot(2); isClear = true; }
+            else { scenarioLabel = "Goodend_Eng"; SMO.SE_Shot(2); isClear = true; }
         }
 
         StartCoroutine(CoTalk());
