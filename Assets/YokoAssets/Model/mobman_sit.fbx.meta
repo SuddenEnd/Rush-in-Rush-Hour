@@ -1,0 +1,162 @@
+fileFormatVersion: 2
+guid: f7a10a3c60ce696429ed7ca77421a760
+timeCreated: 1485051237
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Head
+    100002: HeadTop
+    100004: Hips
+    100006: ikHandle3
+    100008: ikHandle4
+    100010: LeftArm
+    100012: LeftHand
+    100014: LeftLeg
+    100016: LeftLegTop
+    100018: LeftUpArm
+    100020: LeftUpLeg
+    100022: //RootNode
+    100024: Neck
+    100026: pCylinder1
+    100028: pCylinder5
+    100030: polySurface10
+    100032: polySurface2
+    100034: polySurface4
+    100036: polySurface5
+    100038: polySurface6
+    100040: polySurface7
+    100042: polySurface8
+    100044: polySurface9
+    100046: pSphere1
+    100048: RightArm
+    100050: RightHand
+    100052: RightLeg
+    100054: RightLegTop
+    100056: RightUpArm
+    100058: RightUpLeg
+    100060: Spine
+    100062: Spine2
+    400000: Head
+    400002: HeadTop
+    400004: Hips
+    400006: ikHandle3
+    400008: ikHandle4
+    400010: LeftArm
+    400012: LeftHand
+    400014: LeftLeg
+    400016: LeftLegTop
+    400018: LeftUpArm
+    400020: LeftUpLeg
+    400022: //RootNode
+    400024: Neck
+    400026: pCylinder1
+    400028: pCylinder5
+    400030: polySurface10
+    400032: polySurface2
+    400034: polySurface4
+    400036: polySurface5
+    400038: polySurface6
+    400040: polySurface7
+    400042: polySurface8
+    400044: polySurface9
+    400046: pSphere1
+    400048: RightArm
+    400050: RightHand
+    400052: RightLeg
+    400054: RightLegTop
+    400056: RightUpArm
+    400058: RightUpLeg
+    400060: Spine
+    400062: Spine2
+    4300000: pSphere1
+    4300002: polySurface9
+    4300004: polySurface10
+    4300006: polySurface5
+    4300008: polySurface6
+    4300010: polySurface2
+    4300012: polySurface4
+    4300014: polySurface7
+    4300016: polySurface8
+    4300018: pCylinder1
+    4300020: pCylinder5
+    9500000: //RootNode
+    13700000: pCylinder1
+    13700002: pCylinder5
+    13700004: polySurface10
+    13700006: polySurface2
+    13700008: polySurface4
+    13700010: polySurface5
+    13700012: polySurface6
+    13700014: polySurface7
+    13700016: polySurface8
+    13700018: polySurface9
+    13700020: pSphere1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
