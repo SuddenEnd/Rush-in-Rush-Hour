@@ -105,7 +105,6 @@ public class Player_Controller : MonoBehaviour
 		// ステージに取り残されてゲームオーバー
 		if (pltfrm.isScroll && transform.position.x <= -0.95f) {
 			isLeftGameOver = true;
-			Debug.Log("ああああああああああああああああ");
 			SceneManager.LoadScene("Ending");
 		}
 

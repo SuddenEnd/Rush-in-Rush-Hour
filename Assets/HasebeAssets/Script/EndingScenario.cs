@@ -21,7 +21,8 @@ public class EndingScenario : MonoBehaviour
 
         //stress値によってエンディング変化
         if(Change_lang_Button.now_lang == "Japanese") {
-            if (TimeManager.TimeUpflag) { scenarioLabel = "GameOver_timeup"; SMO.SE_Shot(3); }
+            if (Player_Controller.isLeftGameOver) { scenarioLabel = "GameOver_timeup"; SMO.SE_Shot(3); }
+            else if (TimeManager.TimeUpflag) { scenarioLabel = "GameOver_timeup"; SMO.SE_Shot(3); }
             else if (resultStresspoint >= 1000) { scenarioLabel = "GameOver_stress"; SMO.SE_Shot(3); }
             else if (resultStresspoint > 600) { scenarioLabel = "Badend"; SMO.SE_Shot(3); }
             else if (resultStresspoint > 400) { scenarioLabel = "Nomalend"; SMO.SE_Shot(3); }
@@ -30,7 +31,8 @@ public class EndingScenario : MonoBehaviour
 
         else
         {
-            if (TimeManager.TimeUpflag) { scenarioLabel = "GameOver_timeup_Eng"; SMO.SE_Shot(3); }
+            if (Player_Controller.isLeftGameOver) { scenarioLabel = "GameOver_timeup_Eng"; SMO.SE_Shot(3); }
+            else if (TimeManager.TimeUpflag) { scenarioLabel = "GameOver_timeup_Eng"; SMO.SE_Shot(3); }
             else if (resultStresspoint >= 1000) { scenarioLabel = "GameOver_stress_Eng"; SMO.SE_Shot(3); }
             else if (resultStresspoint > 600) { scenarioLabel = "Badend_Eng"; SMO.SE_Shot(3); }
             else if (resultStresspoint > 400) { scenarioLabel = "Nomalend_Eng"; SMO.SE_Shot(3); }
