@@ -18,12 +18,23 @@ public class EndingScenario : MonoBehaviour
         int resultStresspoint = Player_Controller.stress_point;
 
         //stress値によってエンディング変化
-        if (TimeManager.TimeUpflag) scenarioLabel= "GameOver_timeup";
-        else if (resultStresspoint >= 100) scenarioLabel = "GameOver_stress";
-        else if (resultStresspoint > 60) scenarioLabel = "Badend";
-        else if (resultStresspoint > 40) scenarioLabel = "Nomalend";
-        else scenarioLabel = "Goodend";
-        
+        if(Change_lang_Button.now_lang == "Japanese") {
+            if (TimeManager.TimeUpflag) scenarioLabel = "GameOver_timeup";
+            else if (resultStresspoint >= 100) scenarioLabel = "GameOver_stress";
+            else if (resultStresspoint > 60) scenarioLabel = "Badend";
+            else if (resultStresspoint > 40) scenarioLabel = "Nomalend";
+            else scenarioLabel = "Goodend";
+        }
+
+        else if (Change_lang_Button.now_lang == "Englsh")
+        {
+            if (TimeManager.TimeUpflag) scenarioLabel = "GameOver_timeup_Eng";
+            else if (resultStresspoint >= 100) scenarioLabel = "GameOver_stress_Eng";
+            else if (resultStresspoint > 60) scenarioLabel = "Badend_Eng";
+            else if (resultStresspoint > 40) scenarioLabel = "Nomalend_Eng";
+            else scenarioLabel = "Goodend_Eng";
+        }
+
         StartCoroutine(CoTalk());
     }
 
