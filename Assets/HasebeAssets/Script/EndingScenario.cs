@@ -19,7 +19,8 @@ public class EndingScenario : MonoBehaviour
 
         //stress値によってエンディング変化
         if(Change_lang_Button.now_lang == "Japanese") {
-            if (TimeManager.TimeUpflag) scenarioLabel = "GameOver_timeup";
+            if (Player_Controller.isLeftGameOver) scenarioLabel = "GameOver_left";
+            else if (TimeManager.TimeUpflag) scenarioLabel = "GameOver_timeup";
             else if (resultStresspoint >= 1000) scenarioLabel = "GameOver_stress";
             else if (resultStresspoint > 600) scenarioLabel = "Badend";
             else if (resultStresspoint > 400) scenarioLabel = "Nomalend";
@@ -28,10 +29,11 @@ public class EndingScenario : MonoBehaviour
 
         else
         {
-            if (TimeManager.TimeUpflag) scenarioLabel = "GameOver_timeup_Eng";
-            else if (resultStresspoint >= 100) scenarioLabel = "GameOver_stress_Eng";
-            else if (resultStresspoint > 60) scenarioLabel = "Badend_Eng";
-            else if (resultStresspoint > 40) scenarioLabel = "Nomalend_Eng";
+            if (Player_Controller.isLeftGameOver) scenarioLabel = "GameOver_left_Eng";
+            else if (TimeManager.TimeUpflag) scenarioLabel = "GameOver_timeup_Eng";
+            else if (resultStresspoint >= 1000) scenarioLabel = "GameOver_stress_Eng";
+            else if (resultStresspoint > 600) scenarioLabel = "Badend_Eng";
+            else if (resultStresspoint > 400) scenarioLabel = "Nomalend_Eng";
             else scenarioLabel = "Goodend_Eng";
         }
 
