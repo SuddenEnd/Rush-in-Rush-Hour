@@ -25,7 +25,8 @@ public class Explain_btn : MonoBehaviour {
     }
 
     public void LoadMain()
-    {   
+    {
+        GameObject.Find("SoundManager").GetComponent<SoundManager_origin>().SE_Shot(10);
         SceneManager.LoadScene(scene);
     }
 
