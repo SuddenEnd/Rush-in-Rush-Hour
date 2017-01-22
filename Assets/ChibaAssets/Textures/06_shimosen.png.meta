@@ -1,16 +1,6 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-guid: 4322f67262153ff429984363942ff04a
-timeCreated: 1485017623
-=======
-<<<<<<< HEAD
-guid: 4322f67262153ff429984363942ff04a
-timeCreated: 1485017623
-=======
-guid: e170bb05a1a8cd54a8dff9f7816fad90
-timeCreated: 1485014433
->>>>>>> origin/yokochan
->>>>>>> origin/Haseve
+guid: d8bf05bc462cdd249b364fa13b2bdb9d
+timeCreated: 1485021747
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -69,6 +59,22 @@ TextureImporter:
     allowsAlphaSplitting: 0
     overridden: 0
   - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
     maxTextureSize: 2048
     textureFormat: -1
     textureCompression: 1
