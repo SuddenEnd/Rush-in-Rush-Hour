@@ -48,7 +48,6 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
      void Update()
     {
-        Debug.Log(transform.position.x);
         if (transform.position.x > 0.75f)
             transform.position = new Vector3(0.65f, transform.position.y, transform.position.z);
         if (transform.position.x < -0.75f && transform.position.x > -0.85f && TimeManager.Running)
@@ -106,7 +105,7 @@ public class Player_Controller : MonoBehaviour
 		// ステージに取り残されてゲームオーバー
 		if (pltfrm.isScroll && transform.position.x <= -0.95f) {
 			isLeftGameOver = true;
-			Debug.Log(isLeftGameOver);
+			Debug.Log("ああああああああああああああああ");
 			SceneManager.LoadScene("Ending");
 		}
 
