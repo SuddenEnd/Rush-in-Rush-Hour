@@ -26,7 +26,7 @@ public class EndingScenario : MonoBehaviour
             else scenarioLabel = "Goodend";
         }
 
-        else if (Change_lang_Button.now_lang == "Englsh")
+        else
         {
             if (TimeManager.TimeUpflag) scenarioLabel = "GameOver_timeup_Eng";
             else if (resultStresspoint >= 100) scenarioLabel = "GameOver_stress_Eng";
