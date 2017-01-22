@@ -12,23 +12,20 @@ public class GageManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Stressmemory = this.transform.FindChild("Stressgage").gameObject.GetComponent<Image>().fillAmount;
+        
         this.transform.FindChild("Stressgage").gameObject.GetComponent<Image>().sprite = stressgage;
-        Stressmemory = Stressmeter;
+        this.transform.FindChild("Stressgage").gameObject.GetComponent<Image>().fillAmount = Stressmeter;
     }
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            Player_Controller.stress_point += /*PC.add_stress_point*/1;
-            StressUp();
-        }
+
 	}
 
     public void StressUp()
     {
-        Stressmeter = Player_Controller.stress_point / 100.0f;
-        Stressmemory = Stressmeter;
+        Player_Controller.stress_point += /*PC.add_stress_point*/1;
+        Stressmeter = Player_Controller.stress_point / 1000.0f;
+        this.transform.FindChild("Stressgage").gameObject.GetComponent<Image>().fillAmount = Stressmeter;
     }
 }

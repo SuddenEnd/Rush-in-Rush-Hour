@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TimeManager : MonoBehaviour {
 
@@ -18,14 +19,14 @@ public class TimeManager : MonoBehaviour {
     [Header("停車時間")]
     public float stopTimememory;
 
-    private bool Running = true;
+    public bool Running = true;
     
     private float runTime;    
     private float stopTime;
     private bool flashcooltime = false;
 
-
     public static int flashcount = 0;
+    public static bool TimeUpflag = false;
 
 
     public FlashManager FlashM;
@@ -36,11 +37,15 @@ public class TimeManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		SMO = GameObject.Find("SoundManager").GetComponent<SoundManager_origin>();
+        flashcooltime = false;
+        flashcount = 0;
+        TimeUpflag = false;
+        SMO = GameObject.Find("SoundManager").GetComponent<SoundManager_origin>();
 		//        FlashM = GameObject.Find("FlashIcon").GetComponent<FlashManager>();
 		//        PlatF = GameObject.Find("Platform").GetComponent<Platform>();
 		TrainM = GameObject.Find("TrainManager").GetComponent<TrainManager>();
         NPCM = GameObject.Find("NPCManager").GetComponent<NPCManager>();
+     //   TrainSposi = TrainS.transform;
         PlatF.isScroll = true;
     }
 	
@@ -69,6 +74,7 @@ public class TimeManager : MonoBehaviour {
         {
             StartCoroutine("DoorClose");
 			SMO.SE_Shot(9);
+            
 		}
     }
     void judgetime()
@@ -90,6 +96,11 @@ public class TimeManager : MonoBehaviour {
             FlashM.Flashing(flashcount);
         }
 
+    }
+
+    public void GameTimeUp()
+    {
+        StartCoroutine("Onerest");
     }
 
     private IEnumerator DoorOpen()
@@ -115,5 +126,12 @@ public class TimeManager : MonoBehaviour {
         yield return new WaitForSeconds(2.5f);
         Running = true;
         PlatF.isScroll = true;
+    }
+
+    private IEnumerator Onerest()
+    {
+        yield return new WaitForSeconds(4.0f);
+        TimeUpflag = true;
+        SceneManager.LoadScene("Ending");
     }
 }
