@@ -91,7 +91,7 @@ public class Player_Controller : MonoBehaviour
     {
         if (other.gameObject.tag == "NPC" || other.gameObject.tag == "Mob")
         {
- //           GageM.StressUp();
+            GageM.StressUp();
             
  //           Debug.Log(stress_point);
             if(stress_point>2000) SceneManager.LoadScene("Ending");
