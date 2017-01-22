@@ -91,7 +91,7 @@ public class Player_Controller : MonoBehaviour
             GageM.StressUp();
             
  //           Debug.Log(stress_point);
-            if(stress_point>10) SceneManager.LoadScene("Ending");
+            if(stress_point>1000) SceneManager.LoadScene("Ending");
 
         }
     }
