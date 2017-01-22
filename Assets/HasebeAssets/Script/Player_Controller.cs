@@ -25,6 +25,8 @@ public class Player_Controller : MonoBehaviour
     public bool backRotate;
     private bool isBugClear;
     private float bugClearTimer;
+
+    static public bool isClear; 
     // Use this for initialization
     void Start()
     {
@@ -33,7 +35,7 @@ public class Player_Controller : MonoBehaviour
         backRotate = false;
         m_camera = GameObject.Find("Main Camera");
         prepare = true;
-
+        isClear = true;
     }
 
     // Update is called once per frame
@@ -65,13 +67,13 @@ public class Player_Controller : MonoBehaviour
         {
             if (backRotate && Mathf.Abs(Vector3.Distance(new Vector3(0, 0, transform.position.z), new Vector3(0, 0, m_camera.transform.position.z))) < 4f) { }
             else
-                transform.position += transform.forward * vel;
+               transform.Translate(Vector3.forward * vel * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S))
         {
             if (!backRotate && Mathf.Abs(Vector3.Distance(new Vector3(0, 0, transform.position.z), new Vector3(0, 0, m_camera.transform.position.z))) < 4f) { }
             else
-                transform.position -= transform.forward * vel;
+                transform.Translate(Vector3.forward * -vel * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -87,7 +89,7 @@ public class Player_Controller : MonoBehaviour
     {
         if (other.gameObject.tag == "NPC" || other.gameObject.tag == "Mob")
         {
-            GageM.StressUp();
+ //           GageM.StressUp();
             
  //           Debug.Log(stress_point);
             if(stress_point>1000) SceneManager.LoadScene("Ending");
@@ -107,11 +109,11 @@ public class Player_Controller : MonoBehaviour
     {
         if (col.gameObject.tag == "DoorSwitch")
         {
-            if (col.transform.parent.GetComponent<TrainStatus>().ID < GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength - 1) {
+            if (col.transform.parent.GetComponent<TrainStatus>().ID < GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength - 1)
+            {
                 col.gameObject.transform.parent.gameObject.GetComponent<Animator>().SetBool("isOpen", true);
                 TrainManager.trainNum++;
                 Destroy(col.gameObject);
-
             }
         }
         if (col.gameObject.tag == "Door")
@@ -123,6 +125,13 @@ public class Player_Controller : MonoBehaviour
             {
                 prepare = false;
             }
+            else
+            {
+                SceneManager.LoadScene("Ending");
+                isClear = true;
+                Destroy(col.gameObject);
+            }
+
             Destroy(col.gameObject);
         }
 
