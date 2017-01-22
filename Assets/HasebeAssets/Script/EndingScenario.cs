@@ -18,7 +18,8 @@ public class EndingScenario : MonoBehaviour
         int resultStresspoint = Player_Controller.stress_point;
 
         //stress値によってエンディング変化
-        if (resultStresspoint >= 100) scenarioLabel = "GameOver_stress";
+        if (TimeManager.TimeUpflag) scenarioLabel= "GameOver_timeup";
+        else if (resultStresspoint >= 100) scenarioLabel = "GameOver_stress";
         else if (resultStresspoint > 60) scenarioLabel = "Badend";
         else if (resultStresspoint > 40) scenarioLabel = "Nomalend";
         else scenarioLabel = "Goodend";
