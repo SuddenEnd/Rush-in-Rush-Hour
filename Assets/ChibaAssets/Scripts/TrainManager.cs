@@ -32,7 +32,14 @@ public class TrainManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        whatTrainNumber.text = "" + (trainNum) + "両目";
+        if (Change_lang_Button.now_lang == "Japanese")
+        {
+            whatTrainNumber.text = "" + (trainNum) + "両目";
+        }
+        else
+        {
+            whatTrainNumber.text = "Car No." + (trainNum);
+        }
         if (trainCount != trainCount_memory) {
             CreateTrain(trainCount - 1);
         }
@@ -46,6 +53,8 @@ public class TrainManager : MonoBehaviour {
                 doorLimit -= Time.deltaTime;
             else
             {
+                isClose = true;
+                GameObject.Find("SoundManager").GetComponent<SoundManager_origin>().SE_Shot(1);
                 doorLimit = doorLimit_memory;
                 TrainDoorClose();
             }
@@ -65,7 +74,7 @@ public class TrainManager : MonoBehaviour {
         isClose = false;
         for (int i=0; i < animatorList.Count; i++) {
             if (animatorList[i] == null) return;
-            animatorList[i].SetTrigger("Open");
+            animatorList[i].SetBool("isOpen", true);
         }
     }
 
@@ -75,7 +84,7 @@ public class TrainManager : MonoBehaviour {
         for (int i = 0; i < animatorList.Count; i++)
         {
             if (animatorList[i] == null) return;
-            animatorList[i].SetTrigger("Close");
+            animatorList[i].SetBool("isOpen", false);
         }
     }
 }

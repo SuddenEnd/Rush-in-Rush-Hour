@@ -19,10 +19,10 @@ public class TimeManager : MonoBehaviour {
     [Header("停車時間")]
     public float stopTimememory;
 
-    public bool Running = true;
+    static public bool Running;
     
-    private float runTime;    
-    private float stopTime;
+    public float runTime;    
+    public float stopTime;
     private bool flashcooltime = false;
 
     public static int flashcount = 0;
@@ -37,6 +37,7 @@ public class TimeManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        Running = true;
         flashcooltime = false;
         flashcount = 0;
         TimeUpflag = false;
@@ -73,9 +74,7 @@ public class TimeManager : MonoBehaviour {
 		if (stopTime >= stopTimememory)
         {
             StartCoroutine("DoorClose");
-			SMO.SE_Shot(9);
-            
-		}
+        }
     }
     void judgetime()
     {
@@ -108,6 +107,7 @@ public class TimeManager : MonoBehaviour {
         PlatF.isScroll = false;
         runTime = 0.0f;
         yield return new WaitForSeconds(2.5f);
+        stopTime = 0;
         Running = false;
         TrainM.TrainDoorOpen();
         NPCM.GetOffNPC();
@@ -124,6 +124,7 @@ public class TimeManager : MonoBehaviour {
     {
         stopTime = 0.0f;
         yield return new WaitForSeconds(2.5f);
+        runTime = 0.0f;
         Running = true;
         PlatF.isScroll = true;
     }

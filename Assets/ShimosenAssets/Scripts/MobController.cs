@@ -41,16 +41,14 @@ public class MobController : MonoBehaviour {
             walkTimner += Time.deltaTime;
             if (walkTimner > 3f)
             {
-                this.gameObject.GetComponent<MobController>().enabled = false;
                 gameObject.tag = "NPC";
                 gameObject.layer = LayerMask.NameToLayer("NPC");
                 agent.enabled = false;
-                agent.enabled = true;
             }
         }
         else if(isRide1 && !agent.enabled){
 			// 乗り遅れたら死ぬのさ(精度悪い)
-			if (myTfm.position.x <= -0.9f && !TimeMng.Running) {
+			if (myTfm.position.x <= -0.9f && !TimeManager.Running) {
 				Destroy(gameObject);
 			}
 			//Debug.Log(myTfm.position.x);
@@ -58,7 +56,14 @@ public class MobController : MonoBehaviour {
 		// 第2目的地へ
 		if (isRide2) {
             myTfm.position = Vector3.MoveTowards(myTfm.position, newTargetPos, speed * Time.deltaTime);
-		}
+            walkTimner += Time.deltaTime;
+            if (walkTimner > 3f)
+            {
+                gameObject.tag = "NPC";
+                gameObject.layer = LayerMask.NameToLayer("NPC");
+                agent.enabled = false;
+            }
+        }
 
 
 
@@ -66,10 +71,16 @@ public class MobController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.O)) {
 			RideTrain();
 		}
-	}
+        if (this.gameObject.tag == "NPC")
+        {
+            agent.enabled = true;
+            this.gameObject.GetComponent<MobController>().enabled = false;
+        }
 
-	// 電車に乗り込み開始するメソッド
-	public void RideTrain() {
+    }
+
+    // 電車に乗り込み開始するメソッド
+    public void RideTrain() {
 		isRide1 = true;
 		agent.enabled = true;
 		//myTfm.SetParent(null);

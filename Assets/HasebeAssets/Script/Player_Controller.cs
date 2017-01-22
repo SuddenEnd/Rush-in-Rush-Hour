@@ -27,9 +27,14 @@ public class Player_Controller : MonoBehaviour
     private bool isBugClear;
     private float bugClearTimer;
 
-    static public bool isClear; 
-    // Use this for initialization
-    void Start()
+    static public bool isClear;
+
+	// 下荒磯追加分
+	public static bool isLeftGameOver;
+	public Platform pltfrm;
+
+	// Use this for initialization
+	void Start()
     {
         stress_point = 0;
         bugClearTimer = 0;
@@ -37,11 +42,23 @@ public class Player_Controller : MonoBehaviour
         m_camera = GameObject.Find("Main Camera");
         prepare = true;
         isClear = true;
-    }
+
+	}
 
     // Update is called once per frame
      void Update()
     {
+        if (transform.position.x > 0.75f)
+            transform.position = new Vector3(0.65f, transform.position.y, transform.position.z);
+        if (transform.position.x < -0.75f && transform.position.x > -0.85f && TimeManager.Running)
+        {
+            transform.position = new Vector3(-0.65f, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x < -0.9f && transform.position.x > -1f && TimeManager.Running)
+        {
+            transform.position = new Vector3(-1f, transform.position.y, transform.position.z);
+        }
+
         if (bugClearTimer < 1 && !isBugClear)
         {
             transform.Translate(0, 0.000000000000000001f, 0);
@@ -85,7 +102,15 @@ public class Player_Controller : MonoBehaviour
 
         if (TimeManager.TimeUpflag) SceneManager.LoadScene("Ending");
 
-    }
+		// ステージに取り残されてゲームオーバー
+		if (pltfrm.isScroll && transform.position.x <= -0.95f) {
+			isLeftGameOver = true;
+			Debug.Log("ああああああああああああああああ");
+			SceneManager.LoadScene("Ending");
+		}
+
+
+	}
 
     void OnCollisionStay(Collision other)
     {
