@@ -7,10 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class EndingScenario : MonoBehaviour
 {
-    Player_Controller PlayerController;
     public AdvEngine engine;
     string scenarioLabel;
-    bool finish = false;
     //遷移したい任意のシーン名を入力する
     public string scene;
 
@@ -19,6 +17,7 @@ public class EndingScenario : MonoBehaviour
     {
         int resultStresspoint = Player_Controller.stress_point;
 
+        //stress値によってエンディング変化
         if (resultStresspoint >= 100) scenarioLabel = "GameOver_stress";
         else if (resultStresspoint > 60) scenarioLabel = "Badend";
         else if (resultStresspoint > 40) scenarioLabel = "Nomalend";
@@ -27,11 +26,6 @@ public class EndingScenario : MonoBehaviour
         StartCoroutine(CoTalk());
     }
 
-    private void Update()
-    {
-        if (finish) SceneManager.LoadScene(scene);
-
-    }
     IEnumerator CoTalk()
     {
         //「宴」のシナリオ呼び出し
@@ -42,6 +36,6 @@ public class EndingScenario : MonoBehaviour
         {
             yield return 0;
         }
-        finish = true;
+        SceneManager.LoadScene(scene);
     }
 }

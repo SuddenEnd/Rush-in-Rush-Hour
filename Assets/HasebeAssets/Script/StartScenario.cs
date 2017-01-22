@@ -28,7 +28,7 @@ public class StartScenario : MonoBehaviour {
         {
             yield return 0;
         }
-
+        //スタート画面に戻る
         SceneManager.LoadScene(scene);
     }
 

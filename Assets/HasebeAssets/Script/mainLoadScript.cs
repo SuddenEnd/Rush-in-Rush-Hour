@@ -22,7 +22,7 @@ public class mainLoadScript : MonoBehaviour
     public void Update()
     {
         btn = GetComponent<Image>();
-
+        //now_langに応じて使用するボタン画像を変化
         if (Change_lang_Button.now_lang == "Japanese")
         {
             btn.sprite = japanese;
