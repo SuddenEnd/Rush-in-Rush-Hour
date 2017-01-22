@@ -48,7 +48,7 @@ public class MobController : MonoBehaviour {
         }
         else if(isRide1 && !agent.enabled){
 			// 乗り遅れたら死ぬのさ(精度悪い)
-			if (myTfm.position.x <= -0.9f && !TimeMng.Running) {
+			if (myTfm.position.x <= -0.9f && !TimeManager.Running) {
 				Destroy(gameObject);
 			}
 			//Debug.Log(myTfm.position.x);

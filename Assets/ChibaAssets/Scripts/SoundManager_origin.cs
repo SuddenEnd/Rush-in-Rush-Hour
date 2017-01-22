@@ -7,6 +7,8 @@ public class SoundManager_origin : MonoBehaviour
 {
     public AudioSource SEroot;
     public List<AudioClip> SEList = new List<AudioClip>();
+    public AudioClip BGM;
+    bool isBgm;
 
     void Awake()
     {
@@ -24,7 +26,14 @@ public class SoundManager_origin : MonoBehaviour
     public void Update()
     {
         if (Application.loadedLevelName == "Prologue")
+        {
             SEroot.Stop();
+            isBgm = false;
+        }
+        if (Application.loadedLevelName == "Start" && !isBgm) { 
+            SEroot.PlayOneShot(BGM, 1);
+            isBgm = true;
+        }
     }
 
     public void SE_Shot(int i)

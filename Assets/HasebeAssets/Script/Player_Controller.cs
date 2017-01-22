@@ -48,6 +48,18 @@ public class Player_Controller : MonoBehaviour
     // Update is called once per frame
      void Update()
     {
+        Debug.Log(transform.position.x);
+        if (transform.position.x > 0.75f)
+            transform.position = new Vector3(0.65f, transform.position.y, transform.position.z);
+        if (transform.position.x < -0.75f && transform.position.x > -0.85f && TimeManager.Running)
+        {
+            transform.position = new Vector3(-0.65f, transform.position.y, transform.position.z);
+        }
+        if (transform.position.x < -0.9f && transform.position.x > -1f && TimeManager.Running)
+        {
+            transform.position = new Vector3(-1f, transform.position.y, transform.position.z);
+        }
+
         if (bugClearTimer < 1 && !isBugClear)
         {
             transform.Translate(0, 0.000000000000000001f, 0);
@@ -92,7 +104,7 @@ public class Player_Controller : MonoBehaviour
         if (TimeManager.TimeUpflag) SceneManager.LoadScene("Ending");
 
 		// ステージに取り残されてゲームオーバー
-		if (pltfrm.isScroll && transform.position.x <= -1.2f) {
+		if (pltfrm.isScroll && transform.position.x <= -0.95f) {
 			isLeftGameOver = true;
 			Debug.Log(isLeftGameOver);
 			SceneManager.LoadScene("Ending");
