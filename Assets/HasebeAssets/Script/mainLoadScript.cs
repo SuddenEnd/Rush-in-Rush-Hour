@@ -11,17 +11,6 @@ public class mainLoadScript : MonoBehaviour
     //遷移したい任意のシーン名を入力する
     public string scene;
 
-    string now_lang = Change_lang_Button.now_lang;
-
-    //public void Update()
-    //{
-    //    if (now_lang == "Japanese")
-    //    {
-    //        btn = GetComponent<Button>();
-    //        GetComponentInChildren<Text>().text = "START";
-    //    }
-    //}
-
     Image btn;
     public Sprite japanese, english;
 
