@@ -27,9 +27,14 @@ public class Player_Controller : MonoBehaviour
     private bool isBugClear;
     private float bugClearTimer;
 
-    static public bool isClear; 
-    // Use this for initialization
-    void Start()
+    static public bool isClear;
+
+	// 下荒磯追加分
+	public static bool isLeftGameOver;
+	public Platform pltfrm;
+
+	// Use this for initialization
+	void Start()
     {
         stress_point = 0;
         bugClearTimer = 0;
@@ -37,7 +42,8 @@ public class Player_Controller : MonoBehaviour
         m_camera = GameObject.Find("Main Camera");
         prepare = true;
         isClear = true;
-    }
+
+	}
 
     // Update is called once per frame
      void Update()
@@ -85,7 +91,15 @@ public class Player_Controller : MonoBehaviour
 
         if (TimeManager.TimeUpflag) SceneManager.LoadScene("Ending");
 
-    }
+		// ステージに取り残されてゲームオーバー
+		if (pltfrm.isScroll && transform.position.x <= -1.2f) {
+			isLeftGameOver = true;
+			Debug.Log(isLeftGameOver);
+			SceneManager.LoadScene("Ending");
+		}
+
+
+	}
 
     void OnCollisionStay(Collision other)
     {
