@@ -9,6 +9,8 @@ public class NPCMove : MonoBehaviour {
 
     void Start()
     {
+
+
         if (Mathf.Abs(Vector3.Distance(transform.position, GameObject.Find("Home01").transform.position)) < Mathf.Abs(Vector3.Distance(transform.position, GameObject.Find("Home02").transform.position)))
         {
             target = GameObject.Find("Home01").transform;

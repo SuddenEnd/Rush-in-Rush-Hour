@@ -26,16 +26,24 @@ public class Player_Controller : MonoBehaviour
     public bool backRotate;
     private bool isBugClear;
     private float bugClearTimer;
-    // Use this for initialization
-    void Start()
+
+    static public bool isClear;
+
+	// 下荒磯追加分
+	public static bool isLeftGameOver;
+	public Platform pltfrm;
+
+	// Use this for initialization
+	void Start()
     {
         stress_point = 0;
         bugClearTimer = 0;
         backRotate = false;
         m_camera = GameObject.Find("Main Camera");
         prepare = true;
+        isClear = true;
 
-    }
+	}
 
     // Update is called once per frame
      void Update()
@@ -64,13 +72,13 @@ public class Player_Controller : MonoBehaviour
         {
             if (backRotate && Mathf.Abs(Vector3.Distance(new Vector3(0, 0, transform.position.z), new Vector3(0, 0, m_camera.transform.position.z))) < 4f) { }
             else
-                transform.position += transform.forward * vel;
+               transform.Translate(Vector3.forward * vel * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S))
         {
             if (!backRotate && Mathf.Abs(Vector3.Distance(new Vector3(0, 0, transform.position.z), new Vector3(0, 0, m_camera.transform.position.z))) < 4f) { }
             else
-                transform.position -= transform.forward * vel;
+                transform.Translate(Vector3.forward * -vel * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D))
         {
@@ -83,7 +91,15 @@ public class Player_Controller : MonoBehaviour
 
         if (TimeManager.TimeUpflag) SceneManager.LoadScene("Ending");
 
-    }
+		// ステージに取り残されてゲームオーバー
+		if (pltfrm.isScroll && transform.position.x <= -1.2f) {
+			isLeftGameOver = true;
+			Debug.Log(isLeftGameOver);
+			SceneManager.LoadScene("Ending");
+		}
+
+
+	}
 
     void OnCollisionStay(Collision other)
     {
@@ -92,7 +108,7 @@ public class Player_Controller : MonoBehaviour
             GageM.StressUp();
             
  //           Debug.Log(stress_point);
-            if(stress_point>1000) SceneManager.LoadScene("Ending");
+            if(stress_point>2000) SceneManager.LoadScene("Ending");
 
         }
     }
@@ -109,11 +125,11 @@ public class Player_Controller : MonoBehaviour
     {
         if (col.gameObject.tag == "DoorSwitch")
         {
-            if (col.transform.parent.GetComponent<TrainStatus>().ID < GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength - 1) {
+            if (col.transform.parent.GetComponent<TrainStatus>().ID < GameObject.Find("TrainManager").GetComponent<TrainManager>().trainLength - 1)
+            {
                 col.gameObject.transform.parent.gameObject.GetComponent<Animator>().SetBool("isOpen", true);
                 TrainManager.trainNum++;
                 Destroy(col.gameObject);
-
             }
         }
         if (col.gameObject.tag == "Door")
@@ -125,6 +141,13 @@ public class Player_Controller : MonoBehaviour
             {
                 prepare = false;
             }
+            else
+            {
+                SceneManager.LoadScene("Ending");
+                isClear = true;
+                Destroy(col.gameObject);
+            }
+
             Destroy(col.gameObject);
         }
 

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 
 public class SoundManager_origin : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class SoundManager_origin : MonoBehaviour
         {
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    public void Update()
+    {
+        if (Application.loadedLevelName == "Prologue")
+            SEroot.Stop();
     }
 
     public void SE_Shot(int i)

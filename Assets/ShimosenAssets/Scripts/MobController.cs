@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MobController : MonoBehaviour {
-
 	private TimeManager TimeMng;
 	private GameObject[] targets;
 	private GameObject target;
@@ -12,6 +11,7 @@ public class MobController : MonoBehaviour {
 	private bool isRide1;
 	private bool isRide2;
 	private float speed;
+    private float walkTimner;
 
 	private UnityEngine.AI.NavMeshAgent agent;
 
@@ -38,7 +38,15 @@ public class MobController : MonoBehaviour {
 		if (isRide1 && agent.enabled) {
 			//Debug.Log("hoge1");
 			agent.SetDestination(target.transform.position);
-		}else if(isRide1 && !agent.enabled){
+            walkTimner += Time.deltaTime;
+            if (walkTimner > 3f)
+            {
+                gameObject.tag = "NPC";
+                gameObject.layer = LayerMask.NameToLayer("NPC");
+                agent.enabled = false;
+            }
+        }
+        else if(isRide1 && !agent.enabled){
 			// 乗り遅れたら死ぬのさ(精度悪い)
 			if (myTfm.position.x <= -0.9f && !TimeMng.Running) {
 				Destroy(gameObject);
@@ -47,9 +55,15 @@ public class MobController : MonoBehaviour {
 		}
 		// 第2目的地へ
 		if (isRide2) {
-			//Debug.Log("hoge2");
-			myTfm.position = Vector3.MoveTowards(myTfm.position, newTargetPos, speed * Time.deltaTime);
-		}
+            myTfm.position = Vector3.MoveTowards(myTfm.position, newTargetPos, speed * Time.deltaTime);
+            walkTimner += Time.deltaTime;
+            if (walkTimner > 3f)
+            {
+                gameObject.tag = "NPC";
+                gameObject.layer = LayerMask.NameToLayer("NPC");
+                agent.enabled = false;
+            }
+        }
 
 
 
@@ -57,10 +71,16 @@ public class MobController : MonoBehaviour {
 		if (Input.GetKeyDown(KeyCode.O)) {
 			RideTrain();
 		}
-	}
+        if (this.gameObject.tag == "NPC")
+        {
+            agent.enabled = true;
+            this.gameObject.GetComponent<MobController>().enabled = false;
+        }
 
-	// 電車に乗り込み開始するメソッド
-	public void RideTrain() {
+    }
+
+    // 電車に乗り込み開始するメソッド
+    public void RideTrain() {
 		isRide1 = true;
 		agent.enabled = true;
 		//myTfm.SetParent(null);
